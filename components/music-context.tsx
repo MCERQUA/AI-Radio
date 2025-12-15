@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react"
+import { createContext, useContext, useState, useCallback, useEffect, useRef, type ReactNode } from "react"
 import { songsData, type SongData } from "@/lib/songs-data"
 
 export interface Song extends SongData {}
@@ -40,6 +40,48 @@ interface MusicContextType {
 
 const MusicContext = createContext<MusicContextType | null>(null)
 
+// Radio ad/intro song IDs - these play every ~3 songs
+const RADIO_AD_IDS = ["13", "14", "15", "16", "17", "18", "19", "21"]
+
+// Shuffle array helper
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+  return shuffled
+}
+
+// Build a radio queue: shuffled regular songs with ads every ~3 songs
+function buildRadioQueue(allSongs: Song[]): Song[] {
+  const regularSongs = allSongs.filter(s => !RADIO_AD_IDS.includes(s.id))
+  const adSongs = allSongs.filter(s => RADIO_AD_IDS.includes(s.id))
+
+  const shuffledRegular = shuffleArray(regularSongs)
+  const shuffledAds = shuffleArray(adSongs)
+
+  const result: Song[] = []
+  let adIndex = 0
+
+  shuffledRegular.forEach((song, index) => {
+    result.push(song)
+    // Insert an ad after every 3rd song (positions 2, 5, 8, etc.)
+    if ((index + 1) % 3 === 0 && adIndex < shuffledAds.length) {
+      result.push(shuffledAds[adIndex])
+      adIndex++
+    }
+  })
+
+  // Add any remaining ads at the end
+  while (adIndex < shuffledAds.length) {
+    result.push(shuffledAds[adIndex])
+    adIndex++
+  }
+
+  return result
+}
+
 export function MusicProvider({ children }: { children: ReactNode }) {
   const [songs] = useState<Song[]>(songsData)
   const [playlists, setPlaylists] = useState<Playlist[]>([
@@ -51,38 +93,66 @@ export function MusicProvider({ children }: { children: ReactNode }) {
   const [queue, setQueue] = useState<Song[]>([])
   const [currentTime, setCurrentTime] = useState(0)
   const [volume, setVolume] = useState(0.7)
-  const [playedInRadio, setPlayedInRadio] = useState<Set<string>>(new Set())
+  const radioQueueRef = useRef<Song[]>([])
+  const radioIndexRef = useRef(0)
+  const isInitializedRef = useRef(false)
 
-  const getRandomSong = useCallback(() => {
-    const availableSongs = songs.filter((s) => !playedInRadio.has(s.id))
-    if (availableSongs.length === 0) {
-      setPlayedInRadio(new Set())
-      return songs[Math.floor(Math.random() * songs.length)]
+  // Initialize or rebuild radio queue
+  const initRadioQueue = useCallback(() => {
+    radioQueueRef.current = buildRadioQueue(songs)
+    radioIndexRef.current = 0
+  }, [songs])
+
+  // Get next song from radio queue
+  const getNextRadioSong = useCallback(() => {
+    if (radioQueueRef.current.length === 0) {
+      initRadioQueue()
     }
-    return availableSongs[Math.floor(Math.random() * availableSongs.length)]
-  }, [songs, playedInRadio])
+
+    const song = radioQueueRef.current[radioIndexRef.current]
+    radioIndexRef.current++
+
+    // If we've played all songs, reshuffle and start over
+    if (radioIndexRef.current >= radioQueueRef.current.length) {
+      initRadioQueue()
+    }
+
+    return song
+  }, [initRadioQueue])
 
   const playNext = useCallback(() => {
     if (queue.length > 0) {
+      // User has manually queued songs - play those first
       const [nextSong, ...rest] = queue
       setCurrentSong(nextSong)
       setQueue(rest)
       setCurrentTime(0)
     } else if (isRadioMode) {
-      const nextSong = getRandomSong()
+      // Radio mode - get next from shuffled radio queue
+      const nextSong = getNextRadioSong()
       if (nextSong) {
-        setPlayedInRadio((prev) => new Set(prev).add(nextSong.id))
         setCurrentSong(nextSong)
         setCurrentTime(0)
       }
     } else {
       setIsPlaying(false)
     }
-  }, [queue, isRadioMode, getRandomSong])
+  }, [queue, isRadioMode, getNextRadioSong])
 
   const playPrevious = useCallback(() => {
+    // Go back in radio queue if possible
+    if (isRadioMode && radioIndexRef.current > 1) {
+      radioIndexRef.current -= 2 // Go back 2 because playNext will increment
+      const prevSong = radioQueueRef.current[radioIndexRef.current]
+      if (prevSong) {
+        radioIndexRef.current++
+        setCurrentSong(prevSong)
+        setCurrentTime(0)
+        return
+      }
+    }
     setCurrentTime(0)
-  }, [])
+  }, [isRadioMode])
 
   const addToQueue = useCallback((song: Song) => {
     setQueue((prev) => [...prev, song])
@@ -135,16 +205,17 @@ export function MusicProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
-  // Auto-start radio mode
+  // Initialize radio queue and first song on mount
   useEffect(() => {
-    if (!currentSong && isRadioMode) {
-      const randomSong = getRandomSong()
-      if (randomSong) {
-        setPlayedInRadio(new Set([randomSong.id]))
-        setCurrentSong(randomSong)
+    if (!isInitializedRef.current && isRadioMode) {
+      isInitializedRef.current = true
+      initRadioQueue()
+      const firstSong = getNextRadioSong()
+      if (firstSong) {
+        setCurrentSong(firstSong)
       }
     }
-  }, [currentSong, isRadioMode, getRandomSong])
+  }, [isRadioMode, initRadioQueue, getNextRadioSong])
 
   return (
     <MusicContext.Provider
