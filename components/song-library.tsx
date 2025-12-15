@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Clock, Download, Heart, ListPlus, MoreHorizontal, Play, TrendingUp, ExternalLink } from "lucide-react"
+import { Clock, Download, Heart, ListPlus, MoreHorizontal, Play, TrendingUp, ExternalLink, Share2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
@@ -182,13 +182,13 @@ function SongRow({ song, index, isActive, onPlay, onAddToQueue, onAddToPlaylist,
       <Button
         variant="ghost"
         size="icon"
-        className="h-11 w-11 min-h-[44px] min-w-[44px] flex items-center justify-center text-primary hover:text-primary hover:bg-primary/20 active:bg-primary/30 shrink-0"
+        className="h-9 w-9 min-h-[36px] min-w-[36px] sm:h-10 sm:w-10 sm:min-h-[40px] sm:min-w-[40px] md:h-11 md:w-11 md:min-h-[44px] md:min-w-[44px] flex items-center justify-center text-primary hover:text-primary hover:bg-primary/20 active:bg-primary/30 shrink-0"
         onClick={(e) => { e.stopPropagation(); onPlay(); }}
       >
-        <Play className="h-5 w-5 fill-current" />
+        <Play className="h-4 w-4 sm:h-5 sm:w-5 fill-current" />
       </Button>
 
-      <div className="relative h-12 w-12 overflow-hidden rounded-md shrink-0">
+      <div className="relative h-10 w-10 sm:h-12 sm:w-12 overflow-hidden rounded-md shrink-0">
         <img src={song.cover || "/placeholder.svg"} alt={song.title} className="h-full w-full object-cover" />
         {isActive && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/60">
@@ -222,31 +222,31 @@ function SongRow({ song, index, isActive, onPlay, onAddToQueue, onAddToPlaylist,
         <span className="text-sm">{formatDuration(song.duration)}</span>
       </div>
 
-      <div className="hidden md:block">
+      {/* Action buttons container - wraps on mobile */}
+      <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
         <ShareButton song={song} />
-      </div>
 
-      <Button
-        variant="ghost"
-        size="icon"
-        className="hidden md:flex h-11 w-11 min-h-[44px] min-w-[44px] text-muted-foreground hover:text-accent"
-        onClick={(e) => { e.stopPropagation(); downloadSong(song); }}
-        title="Download"
-      >
-        <Download className="h-5 w-5" />
-      </Button>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="h-9 w-9 min-h-[36px] min-w-[36px] sm:h-10 sm:w-10 sm:min-h-[40px] sm:min-w-[40px] md:h-11 md:w-11 md:min-h-[44px] md:min-w-[44px] text-muted-foreground hover:text-accent"
+          onClick={(e) => { e.stopPropagation(); downloadSong(song); }}
+          title="Download"
+        >
+          <Download className="h-4 w-4 md:h-5 md:w-5" />
+        </Button>
 
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-11 w-11 min-h-[44px] min-w-[44px] text-muted-foreground hover:text-foreground"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <MoreHorizontal className="h-5 w-5" />
-          </Button>
-        </DropdownMenuTrigger>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-9 w-9 min-h-[36px] min-w-[36px] sm:h-10 sm:w-10 sm:min-h-[40px] sm:min-w-[40px] md:h-11 md:w-11 md:min-h-[44px] md:min-w-[44px] text-muted-foreground hover:text-foreground"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <MoreHorizontal className="h-4 w-4 md:h-5 md:w-5" />
+            </Button>
+          </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-48 bg-popover border-border">
           <DropdownMenuItem asChild className="cursor-pointer">
             <Link href={`/song/${song.id}`}>
@@ -261,6 +261,20 @@ function SongRow({ song, index, isActive, onPlay, onAddToQueue, onAddToPlaylist,
           <DropdownMenuItem onClick={() => downloadSong(song)} className="cursor-pointer">
             <Download className="mr-2 h-4 w-4" />
             Download
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              const shareUrl = `${window.location.origin}/song/${song.id}`
+              if (navigator.share) {
+                navigator.share({ title: song.title, text: `Check out "${song.title}" by ${song.artist}!`, url: shareUrl })
+              } else {
+                navigator.clipboard.writeText(shareUrl)
+              }
+            }}
+            className="cursor-pointer"
+          >
+            <Share2 className="mr-2 h-4 w-4" />
+            Share
           </DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger className="cursor-pointer">
@@ -280,7 +294,8 @@ function SongRow({ song, index, isActive, onPlay, onAddToQueue, onAddToPlaylist,
             </DropdownMenuSubContent>
           </DropdownMenuSub>
         </DropdownMenuContent>
-      </DropdownMenu>
+        </DropdownMenu>
+      </div>
     </div>
   )
 }

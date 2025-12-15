@@ -15,7 +15,6 @@ import {
   Phone,
   Globe,
   Building2,
-  Music,
   Clock,
   Radio,
 } from "lucide-react"
@@ -135,27 +134,28 @@ export function SongPageClient({ song }: SongPageClientProps) {
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             {/* Album Art */}
             <div className="aspect-square relative rounded-2xl overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20 shadow-2xl">
-              <div className="absolute inset-0 flex items-center justify-center">
-                {/* Vinyl record design */}
-                <div className="w-[90%] h-[90%] rounded-full bg-gradient-to-br from-zinc-900 to-zinc-800 shadow-inner flex items-center justify-center relative">
-                  {/* Grooves */}
-                  <div className="absolute inset-4 rounded-full border border-zinc-700/50" />
-                  <div className="absolute inset-8 rounded-full border border-zinc-700/30" />
-                  <div className="absolute inset-12 rounded-full border border-zinc-700/50" />
-                  <div className="absolute inset-16 rounded-full border border-zinc-700/30" />
-                  <div className="absolute inset-20 rounded-full border border-zinc-700/50" />
-                  {/* Center label */}
-                  <div className="w-1/3 h-1/3 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg">
-                    <Music className="h-8 w-8 text-primary-foreground" />
+              <img
+                src={song.cover || "/placeholder.svg"}
+                alt={song.title}
+                className="w-full h-full object-cover"
+              />
+              {/* Playing indicator overlay */}
+              {isPlaying && (
+                <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                  <div className="flex gap-1">
+                    {[1, 2, 3, 4].map((i) => (
+                      <div
+                        key={i}
+                        className="w-2 bg-white/80 rounded-full animate-pulse"
+                        style={{
+                          height: `${16 + i * 8}px`,
+                          animationDelay: `${i * 0.15}s`,
+                        }}
+                      />
+                    ))}
                   </div>
-                  {/* Spinning animation when playing */}
-                  {isPlaying && (
-                    <div className="absolute inset-0 rounded-full animate-spin" style={{ animationDuration: "3s" }}>
-                      <div className="absolute top-4 left-1/2 w-1 h-1 bg-zinc-600 rounded-full" />
-                    </div>
-                  )}
                 </div>
-              </div>
+              )}
             </div>
 
             {/* Song Info */}

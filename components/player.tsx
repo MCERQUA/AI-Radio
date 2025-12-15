@@ -149,7 +149,7 @@ export function Player() {
         />
       </div>
 
-      <div className="flex items-center justify-between gap-2 px-3 py-2 md:gap-4 md:px-6 md:py-3">
+      <div className="flex items-center justify-between gap-2 px-2 py-2 md:gap-4 md:px-6 md:py-3">
         {/* Song Info - Hidden on mobile, shown on md+ */}
         <div className="hidden md:flex items-center gap-4 min-w-0 w-1/4">
           {currentSong ? (
@@ -211,8 +211,8 @@ export function Player() {
           )}
         </div>
 
-        {/* Mobile: Compact song info */}
-        <div className="flex md:hidden items-center gap-2 min-w-0 shrink-0">
+        {/* Mobile: Compact song info - fixed width for centering */}
+        <div className="flex md:hidden items-center gap-2 w-[100px] shrink-0">
           {currentSong && (
             <>
               <div className="relative h-10 w-10 overflow-hidden rounded shrink-0">
@@ -222,7 +222,7 @@ export function Player() {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <div className="min-w-0 max-w-[80px]">
+              <div className="min-w-0 flex-1">
                 <p className="text-xs font-medium truncate">{currentSong.title}</p>
                 <p className="text-[10px] text-muted-foreground truncate">{currentSong.artist}</p>
               </div>
@@ -231,7 +231,7 @@ export function Player() {
         </div>
 
         {/* Controls */}
-        <div className="flex flex-col items-center gap-1 md:gap-2 flex-1 max-w-md">
+        <div className="flex flex-col items-center gap-1 md:gap-2 flex-1 md:max-w-md">
           <div className="flex items-center gap-1 md:gap-2">
             <Button variant="ghost" size="icon" className="hidden sm:flex h-11 w-11 min-h-[44px] min-w-[44px] text-muted-foreground hover:text-foreground active:bg-secondary">
               <Shuffle className="h-5 w-5" />
@@ -289,19 +289,17 @@ export function Player() {
           </div>
         </div>
 
-        {/* Mobile action buttons */}
-        <div className="flex md:hidden items-center gap-1">
+        {/* Mobile action buttons - fixed width to match left side for centering */}
+        <div className="flex md:hidden items-center justify-end gap-1 w-[100px] shrink-0">
           {currentSong && (
-            <>
-              <Button
-                variant="ghost"
-                size="icon"
-                className={cn("h-11 w-11 min-h-[44px] min-w-[44px]", isFavorite && "text-primary")}
-                onClick={toggleFavorite}
-              >
-                <Heart className={cn("h-5 w-5", isFavorite && "fill-current")} />
-              </Button>
-            </>
+            <Button
+              variant="ghost"
+              size="icon"
+              className={cn("h-10 w-10 min-h-[40px] min-w-[40px]", isFavorite && "text-primary")}
+              onClick={toggleFavorite}
+            >
+              <Heart className={cn("h-5 w-5", isFavorite && "fill-current")} />
+            </Button>
           )}
         </div>
 

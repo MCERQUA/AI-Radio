@@ -71,8 +71,8 @@ export function ShareButton({ song, variant = "ghost", size = "icon" }: ShareBut
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant={variant} size={size} className="h-8 w-8 text-muted-foreground hover:text-foreground">
-          <Share2 className="h-4 w-4" />
+        <Button variant={variant} size={size} className="h-9 w-9 min-h-[36px] min-w-[36px] sm:h-10 sm:w-10 sm:min-h-[40px] sm:min-w-[40px] md:h-11 md:w-11 md:min-h-[44px] md:min-w-[44px] text-muted-foreground hover:text-foreground">
+          <Share2 className="h-4 w-4 md:h-5 md:w-5" />
           <span className="sr-only">Share</span>
         </Button>
       </DropdownMenuTrigger>
