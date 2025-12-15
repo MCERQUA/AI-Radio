@@ -45,7 +45,7 @@ export function SongLibrary() {
   const handlePlaySong = (song: Song) => {
     setCurrentSong(song)
     setIsPlaying(true)
-    setIsRadioMode(false)
+    // Keep radio mode on so songs continue to auto-play after this one ends
   }
 
   return (
