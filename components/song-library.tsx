@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Clock, Download, Heart, ListPlus, MoreHorizontal, Play, TrendingUp } from "lucide-react"
+import Link from "next/link"
+import { Clock, Download, Heart, ListPlus, MoreHorizontal, Play, TrendingUp, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
@@ -14,18 +15,20 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useMusic, type Song } from "./music-context"
+import { ShareButton } from "./share-button"
 import { cn } from "@/lib/utils"
 
 const genres = [
   "All",
-  "Synthwave",
+  "Hip-Hop",
+  "Commercial/Jingle",
+  "Country",
   "Electronic",
-  "Cyberpunk",
-  "Ambient",
-  "Techno",
-  "Industrial",
-  "Chillwave",
-  "Drum & Bass",
+  "Latin/Pop",
+  "Parody/Pop",
+  "Blues",
+  "Novelty",
+  "Indie Rock",
 ]
 
 export function SongLibrary() {
@@ -134,11 +137,14 @@ export function SongLibrary() {
 }
 
 function downloadSong(song: Song) {
-  // Create a download link - in production this would link to actual audio files
-  const link = document.createElement("a")
-  link.href = song.cover // Using cover as placeholder - replace with actual audio URL
-  link.download = `${song.artist} - ${song.title}.mp3`
-  // For demo purposes, we'll trigger a simulated download notification
+  if (song.src) {
+    const link = document.createElement("a")
+    link.href = song.src
+    link.download = `${song.artist} - ${song.title}.mp3`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
   const notification = document.createElement("div")
   notification.className =
     "fixed top-4 right-4 bg-primary text-primary-foreground px-4 py-2 rounded-lg shadow-lg z-50 animate-in fade-in slide-in-from-top-2"
@@ -217,6 +223,8 @@ function SongRow({ song, index, isActive, onPlay, onAddToQueue, onAddToPlaylist,
         <span className="text-sm">{formatDuration(song.duration)}</span>
       </div>
 
+      <ShareButton song={song} />
+
       <Button
         variant="ghost"
         size="icon"
@@ -234,6 +242,12 @@ function SongRow({ song, index, isActive, onPlay, onAddToQueue, onAddToPlaylist,
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-48 bg-popover border-border">
+          <DropdownMenuItem asChild className="cursor-pointer">
+            <Link href={`/song/${song.id}`}>
+              <ExternalLink className="mr-2 h-4 w-4" />
+              View Song Page
+            </Link>
+          </DropdownMenuItem>
           <DropdownMenuItem onClick={onAddToQueue} className="cursor-pointer">
             <ListPlus className="mr-2 h-4 w-4" />
             Add to Queue

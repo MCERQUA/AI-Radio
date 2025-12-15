@@ -18,6 +18,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
 import { useMusic } from "./music-context"
+import { ShareButton } from "./share-button"
 import { cn } from "@/lib/utils"
 
 function downloadSong(song: { title: string; artist: string; cover: string; src?: string }) {
@@ -188,6 +189,7 @@ export function Player() {
               >
                 <Download className="h-4 w-4" />
               </Button>
+              <ShareButton song={currentSong} />
             </>
           ) : (
             <div className="flex items-center gap-3">
