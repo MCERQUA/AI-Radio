@@ -68,6 +68,9 @@ export function Player() {
     return `${mins}:${secs.toString().padStart(2, "0")}`
   }
 
+  // Track if we should auto-play after loading
+  const shouldAutoPlayRef = useRef(false)
+
   // Initialize audio element (only once)
   useEffect(() => {
     const audio = new Audio()
@@ -78,7 +81,17 @@ export function Player() {
     }
 
     const handleEnded = () => {
+      // Mark that we should auto-play the next song
+      shouldAutoPlayRef.current = true
       playNextRef.current()
+    }
+
+    const handleCanPlay = () => {
+      // Auto-play when ready if we should
+      if (shouldAutoPlayRef.current && audioRef.current) {
+        shouldAutoPlayRef.current = false
+        audioRef.current.play().catch(console.error)
+      }
     }
 
     const handleError = (e: Event) => {
@@ -87,11 +100,13 @@ export function Player() {
 
     audio.addEventListener("timeupdate", handleTimeUpdate)
     audio.addEventListener("ended", handleEnded)
+    audio.addEventListener("canplay", handleCanPlay)
     audio.addEventListener("error", handleError)
 
     return () => {
       audio.removeEventListener("timeupdate", handleTimeUpdate)
       audio.removeEventListener("ended", handleEnded)
+      audio.removeEventListener("canplay", handleCanPlay)
       audio.removeEventListener("error", handleError)
       audio.pause()
       audioRef.current = null
@@ -104,12 +119,17 @@ export function Player() {
 
     if (currentSong?.src) {
       // Only update src if it changed
-      if (audioRef.current.src !== window.location.origin + currentSong.src) {
+      const currentSrc = audioRef.current.src
+      const newSrc = currentSong.src.startsWith('http') ? currentSong.src : window.location.origin + currentSong.src
+
+      if (currentSrc !== newSrc) {
+        // If already playing, mark for auto-play after load
+        if (isPlaying) {
+          shouldAutoPlayRef.current = true
+        }
         audioRef.current.src = currentSong.src
         audioRef.current.load()
-      }
-
-      if (isPlaying) {
+      } else if (isPlaying) {
         audioRef.current.play().catch(console.error)
       } else {
         audioRef.current.pause()
