@@ -335,7 +335,7 @@ export const songsData: SongData[] = [
     artist: "DJ FoamBot Productions",
     genre: "Hip-Hop",
     duration: 92,
-    cover: "/placeholder.svg",
+    cover: "/covers/foam-is-my-fav-f-word.jpeg",
     plays: 8400,
     src: "/music/Foam-is-my-fav-F-word.mp3",
     description: "You know what our favorite F-word is... FOAM!",
