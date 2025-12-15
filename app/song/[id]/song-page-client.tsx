@@ -117,7 +117,7 @@ export function SongPageClient({ song }: SongPageClientProps) {
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-border/50 bg-background/95 backdrop-blur-xl">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="/" className="flex items-center gap-2 text-accent hover:text-accent/80 transition-colors font-medium">
             <ArrowLeft className="h-5 w-5" />
             <span>Back to Radio</span>
           </Link>
@@ -297,7 +297,7 @@ export function SongPageClient({ song }: SongPageClientProps) {
           {/* Call to Action */}
           <div className="mt-12 text-center">
             <Link href="/">
-              <Button variant="outline" size="lg" className="gap-2">
+              <Button size="lg" className="gap-2 bg-accent text-accent-foreground hover:bg-accent/90 glow-yellow font-semibold">
                 <Radio className="h-5 w-5" />
                 Listen to More on SprayFoamRadio
               </Button>
