@@ -21,12 +21,14 @@ import { cn } from "@/lib/utils"
 const genres = [
   "All",
   "Hip-Hop",
-  "Commercial/Jingle",
   "Country",
-  "Electronic",
-  "Latin/Pop",
+  "Country/Rock",
+  "Pop",
   "Parody/Pop",
-  "Blues",
+  "Latin/Pop",
+  "R&B",
+  "Reggae",
+  "Electronic",
   "Novelty",
   "Indie Rock",
 ]
