@@ -24,6 +24,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const description = song.description || `Listen to "${song.title}" by ${song.artist} on SprayFoamRadio.com`
+  const baseUrl = "https://sprayfoamradio.com"
+  const imageUrl = song.cover && song.cover !== "/placeholder.svg"
+    ? `${baseUrl}${song.cover}`
+    : `${baseUrl}/og-image.png`
 
   return {
     title: `${song.title} - ${song.artist} | SprayFoamRadio.com`,
@@ -33,11 +37,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       type: "music.song",
       siteName: "SprayFoamRadio.com",
+      url: `${baseUrl}/song/${song.id}`,
       images: [
         {
-          url: song.cover !== "/placeholder.svg" ? song.cover : "/og-image.png",
+          url: imageUrl,
           width: 1200,
-          height: 630,
+          height: 1200,
           alt: `${song.title} album cover`,
         },
       ],
@@ -46,7 +51,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title: `${song.title} - ${song.artist}`,
       description,
-      images: [song.cover !== "/placeholder.svg" ? song.cover : "/og-image.png"],
+      images: [imageUrl],
     },
   }
 }
