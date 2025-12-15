@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useCallback } from "react"
 import {
   Download,
   Heart,
@@ -55,6 +55,12 @@ export function Player() {
   } = useMusic()
 
   const audioRef = useRef<HTMLAudioElement | null>(null)
+  const playNextRef = useRef(playNext)
+
+  // Keep playNextRef current
+  useEffect(() => {
+    playNextRef.current = playNext
+  }, [playNext])
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60)
@@ -62,29 +68,35 @@ export function Player() {
     return `${mins}:${secs.toString().padStart(2, "0")}`
   }
 
-  // Initialize audio element
+  // Initialize audio element (only once)
   useEffect(() => {
-    if (!audioRef.current) {
-      audioRef.current = new Audio()
-      audioRef.current.addEventListener("timeupdate", () => {
-        if (audioRef.current) {
-          setCurrentTime(audioRef.current.currentTime)
-        }
-      })
-      audioRef.current.addEventListener("ended", () => {
-        playNext()
-      })
-      audioRef.current.addEventListener("error", (e) => {
-        console.error("Audio error:", e)
-      })
+    const audio = new Audio()
+    audioRef.current = audio
+
+    const handleTimeUpdate = () => {
+      setCurrentTime(audio.currentTime)
     }
+
+    const handleEnded = () => {
+      playNextRef.current()
+    }
+
+    const handleError = (e: Event) => {
+      console.error("Audio error:", e)
+    }
+
+    audio.addEventListener("timeupdate", handleTimeUpdate)
+    audio.addEventListener("ended", handleEnded)
+    audio.addEventListener("error", handleError)
+
     return () => {
-      if (audioRef.current) {
-        audioRef.current.pause()
-        audioRef.current = null
-      }
+      audio.removeEventListener("timeupdate", handleTimeUpdate)
+      audio.removeEventListener("ended", handleEnded)
+      audio.removeEventListener("error", handleError)
+      audio.pause()
+      audioRef.current = null
     }
-  }, [playNext, setCurrentTime])
+  }, [setCurrentTime])
 
   // Handle song change
   useEffect(() => {
