@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useCallback } from "react"
+import { useEffect, useRef } from "react"
 import {
   Download,
   Heart,
@@ -20,7 +20,15 @@ import { Slider } from "@/components/ui/slider"
 import { useMusic } from "./music-context"
 import { cn } from "@/lib/utils"
 
-function downloadSong(song: { title: string; artist: string; cover: string }) {
+function downloadSong(song: { title: string; artist: string; cover: string; src?: string }) {
+  if (song.src) {
+    const link = document.createElement("a")
+    link.href = song.src
+    link.download = `${song.artist} - ${song.title}.mp3`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
   const notification = document.createElement("div")
   notification.className =
     "fixed top-4 right-4 bg-primary text-primary-foreground px-4 py-2 rounded-lg shadow-lg z-[100] animate-in fade-in slide-in-from-top-2"
@@ -45,7 +53,7 @@ export function Player() {
     addToPlaylist,
   } = useMusic()
 
-  const progressInterval = useRef<NodeJS.Timeout | null>(null)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60)
@@ -53,34 +61,58 @@ export function Player() {
     return `${mins}:${secs.toString().padStart(2, "0")}`
   }
 
-  const startProgress = useCallback(() => {
-    if (progressInterval.current) clearInterval(progressInterval.current)
-    progressInterval.current = setInterval(() => {
-      setCurrentTime((prev: number) => {
-        if (currentSong && prev >= currentSong.duration) {
-          playNext()
-          return 0
-        }
-        return prev + 1
-      })
-    }, 1000)
-  }, [currentSong, playNext, setCurrentTime])
-
-  const stopProgress = useCallback(() => {
-    if (progressInterval.current) {
-      clearInterval(progressInterval.current)
-      progressInterval.current = null
-    }
-  }, [])
-
+  // Initialize audio element
   useEffect(() => {
-    if (isPlaying && currentSong) {
-      startProgress()
-    } else {
-      stopProgress()
+    if (!audioRef.current) {
+      audioRef.current = new Audio()
+      audioRef.current.addEventListener("timeupdate", () => {
+        if (audioRef.current) {
+          setCurrentTime(audioRef.current.currentTime)
+        }
+      })
+      audioRef.current.addEventListener("ended", () => {
+        playNext()
+      })
+      audioRef.current.addEventListener("error", (e) => {
+        console.error("Audio error:", e)
+      })
     }
-    return () => stopProgress()
-  }, [isPlaying, currentSong, startProgress, stopProgress])
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause()
+        audioRef.current = null
+      }
+    }
+  }, [playNext, setCurrentTime])
+
+  // Handle song change
+  useEffect(() => {
+    if (audioRef.current && currentSong?.src) {
+      audioRef.current.src = currentSong.src
+      audioRef.current.load()
+      if (isPlaying) {
+        audioRef.current.play().catch(console.error)
+      }
+    }
+  }, [currentSong])
+
+  // Handle play/pause
+  useEffect(() => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.play().catch(console.error)
+      } else {
+        audioRef.current.pause()
+      }
+    }
+  }, [isPlaying])
+
+  // Handle volume change
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume
+    }
+  }, [volume])
 
   const isFavorite =
     currentSong && playlists.find((p) => p.id === "favorites")?.songs.find((s) => s.id === currentSong.id)
@@ -214,8 +246,10 @@ export function Player() {
               step={0.1}
               className="flex-1"
               onValueChange={([value]) => {
-                if (currentSong) {
-                  setCurrentTime((value / 100) * currentSong.duration)
+                if (currentSong && audioRef.current) {
+                  const newTime = (value / 100) * currentSong.duration
+                  audioRef.current.currentTime = newTime
+                  setCurrentTime(newTime)
                 }
               }}
             />
