@@ -47,38 +47,39 @@ export function SongLibrary() {
   }
 
   return (
-    <div className="p-4 md:p-6 overflow-x-hidden">
+    <div className="p-2 sm:p-4 md:p-6 overflow-x-hidden">
       <Tabs defaultValue="browse" className="w-full overflow-hidden">
-        <TabsList className="bg-secondary/50 border border-border/50 mb-4 md:mb-6 h-12">
+        <TabsList className="bg-secondary/50 border border-border/50 mb-2 sm:mb-4 md:mb-6 h-9 sm:h-10 md:h-12">
           <TabsTrigger
             value="browse"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground min-h-[44px] px-4"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground text-xs sm:text-sm px-2 sm:px-4"
           >
             Browse
           </TabsTrigger>
           <TabsTrigger
             value="trending"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground min-h-[44px] px-4"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground text-xs sm:text-sm px-2 sm:px-4"
           >
             Trending
           </TabsTrigger>
           <TabsTrigger
             value="queue"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground min-h-[44px] px-4"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground text-xs sm:text-sm px-2 sm:px-4"
           >
             Queue
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="browse" className="space-y-4 md:space-y-6">
-          <div className="flex flex-wrap gap-2">
+        <TabsContent value="browse" className="space-y-2 sm:space-y-4 md:space-y-6">
+          {/* Genre filters - horizontal scroll on mobile */}
+          <div className="flex gap-1.5 sm:gap-2 overflow-x-auto pb-2 -mx-2 px-2 sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible">
             {genres.map((genre) => (
               <Button
                 key={genre}
                 variant="outline"
                 size="sm"
                 className={cn(
-                  "rounded-full border-border/50 transition-all min-h-[40px] px-4 text-sm",
+                  "rounded-full border-border/50 transition-all h-7 sm:h-8 md:min-h-[40px] px-2.5 sm:px-3 md:px-4 text-xs sm:text-sm whitespace-nowrap shrink-0 sm:shrink",
                   selectedGenre === genre
                     ? "bg-primary text-primary-foreground border-primary glow-red"
                     : "hover:border-primary/50 hover:text-primary active:bg-primary/20",
@@ -90,7 +91,7 @@ export function SongLibrary() {
             ))}
           </div>
 
-          <div className="grid gap-3 overflow-x-hidden">
+          <div className="grid gap-1.5 sm:gap-2 md:gap-3 overflow-x-hidden">
             {filteredSongs.map((song, index) => (
               <SongRow
                 key={song.id}
