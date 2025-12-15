@@ -47,8 +47,8 @@ export function SongLibrary() {
   }
 
   return (
-    <div className="p-4 md:p-6">
-      <Tabs defaultValue="browse" className="w-full">
+    <div className="p-4 md:p-6 overflow-x-hidden">
+      <Tabs defaultValue="browse" className="w-full overflow-hidden">
         <TabsList className="bg-secondary/50 border border-border/50 mb-4 md:mb-6 h-12">
           <TabsTrigger
             value="browse"
@@ -90,7 +90,7 @@ export function SongLibrary() {
             ))}
           </div>
 
-          <div className="grid gap-3">
+          <div className="grid gap-3 overflow-x-hidden">
             {filteredSongs.map((song, index) => (
               <SongRow
                 key={song.id}
@@ -173,7 +173,7 @@ function SongRow({ song, index, isActive, onPlay, onAddToQueue, onAddToPlaylist,
   return (
     <div
       className={cn(
-        "group flex items-center gap-2 md:gap-4 rounded-lg p-2 md:p-3 transition-all hover:bg-secondary/50 active:bg-secondary/70 min-h-[64px] cursor-pointer",
+        "group flex items-center gap-2 md:gap-4 rounded-lg p-2 md:p-3 transition-all hover:bg-secondary/50 active:bg-secondary/70 min-h-[56px] sm:min-h-[64px] cursor-pointer overflow-hidden",
         isActive && "bg-primary/10 border border-primary/30",
       )}
       onClick={onPlay}
@@ -222,31 +222,34 @@ function SongRow({ song, index, isActive, onPlay, onAddToQueue, onAddToPlaylist,
         <span className="text-sm">{formatDuration(song.duration)}</span>
       </div>
 
-      {/* Action buttons container - wraps on mobile */}
-      <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
+      {/* Share button - hidden on mobile, in dropdown instead */}
+      <div className="hidden sm:block">
         <ShareButton song={song} />
+      </div>
 
-        <Button
-          variant="ghost"
-          size="icon"
-          className="h-9 w-9 min-h-[36px] min-w-[36px] sm:h-10 sm:w-10 sm:min-h-[40px] sm:min-w-[40px] md:h-11 md:w-11 md:min-h-[44px] md:min-w-[44px] text-muted-foreground hover:text-accent"
-          onClick={(e) => { e.stopPropagation(); downloadSong(song); }}
-          title="Download"
-        >
-          <Download className="h-4 w-4 md:h-5 md:w-5" />
-        </Button>
+      {/* Download button - hidden on mobile, in dropdown instead */}
+      <Button
+        variant="ghost"
+        size="icon"
+        className="hidden sm:flex h-10 w-10 min-h-[40px] min-w-[40px] md:h-11 md:w-11 md:min-h-[44px] md:min-w-[44px] text-muted-foreground hover:text-accent"
+        onClick={(e) => { e.stopPropagation(); downloadSong(song); }}
+        title="Download"
+      >
+        <Download className="h-4 w-4 md:h-5 md:w-5" />
+      </Button>
 
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-9 w-9 min-h-[36px] min-w-[36px] sm:h-10 sm:w-10 sm:min-h-[40px] sm:min-w-[40px] md:h-11 md:w-11 md:min-h-[44px] md:min-w-[44px] text-muted-foreground hover:text-foreground"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <MoreHorizontal className="h-4 w-4 md:h-5 md:w-5" />
-            </Button>
-          </DropdownMenuTrigger>
+      {/* More menu - always visible */}
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-9 w-9 min-h-[36px] min-w-[36px] sm:h-10 sm:w-10 sm:min-h-[40px] sm:min-w-[40px] text-muted-foreground hover:text-foreground shrink-0"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <MoreHorizontal className="h-5 w-5" />
+          </Button>
+        </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-48 bg-popover border-border">
           <DropdownMenuItem asChild className="cursor-pointer">
             <Link href={`/song/${song.id}`}>
@@ -294,8 +297,7 @@ function SongRow({ song, index, isActive, onPlay, onAddToQueue, onAddToPlaylist,
             </DropdownMenuSubContent>
           </DropdownMenuSub>
         </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
+      </DropdownMenu>
     </div>
   )
 }
