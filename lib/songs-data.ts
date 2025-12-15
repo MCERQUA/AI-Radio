@@ -233,11 +233,11 @@ export const songsData: SongData[] = [
   },
   {
     id: "20",
-    title: "Ink Flow Empire",
+    title: "Foam Guns For Hire",
     artist: "DJ FoamBot Productions feat. Foam Swag",
     genre: "Hip-Hop",
     duration: 83,
-    cover: "/placeholder.svg",
+    cover: "/covers/foam-guns-for-hire.jpeg",
     plays: 8900,
     src: "/music/Foam Guns for Hire.mp3",
     description: "A hype track celebrating the screen printing hustle - part of the Foam Swag apparel line. Iowa's finest print shop!",
