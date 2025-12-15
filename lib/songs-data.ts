@@ -293,7 +293,7 @@ export const songsData: SongData[] = [
     artist: "DJ FoamBot Productions feat. On the Mark Spray Foam",
     genre: "Indie Rock",
     duration: 122,
-    cover: "/placeholder.svg",
+    cover: "/covers/sprayfoam-marksman.jpeg",
     plays: 11500,
     src: "/music/The Spray Foam Marksman.mp3",
     description: "The official anthem for Mark and the On the Mark Spray Foam crew in Holiday, Florida! Over 20 years of precision spray foam insulation.",
