@@ -68,6 +68,10 @@ export function Player() {
     return `${mins}:${secs.toString().padStart(2, "0")}`
   }
 
+  // Track if we should auto-play when audio is ready
+  const pendingPlayRef = useRef(false)
+  const lastSrcRef = useRef<string>("")
+
   // Initialize audio element (only once)
   useEffect(() => {
     const audio = new Audio()
@@ -78,29 +82,38 @@ export function Player() {
     }
 
     const handleEnded = () => {
-      // Play next song when current one ends
+      // Mark that we want to auto-play the next song
+      pendingPlayRef.current = true
       playNextRef.current()
+    }
+
+    const handleCanPlayThrough = () => {
+      // Audio is ready - play if we have a pending play request
+      if (pendingPlayRef.current) {
+        pendingPlayRef.current = false
+        audio.play().catch(console.error)
+      }
     }
 
     const handleError = (e: Event) => {
       console.error("Audio error:", e)
+      pendingPlayRef.current = false
     }
 
     audio.addEventListener("timeupdate", handleTimeUpdate)
     audio.addEventListener("ended", handleEnded)
+    audio.addEventListener("canplaythrough", handleCanPlayThrough)
     audio.addEventListener("error", handleError)
 
     return () => {
       audio.removeEventListener("timeupdate", handleTimeUpdate)
       audio.removeEventListener("ended", handleEnded)
+      audio.removeEventListener("canplaythrough", handleCanPlayThrough)
       audio.removeEventListener("error", handleError)
       audio.pause()
       audioRef.current = null
     }
   }, [setCurrentTime])
-
-  // Track current song src to detect changes
-  const lastSrcRef = useRef<string>("")
 
   // Handle song change and play/pause
   useEffect(() => {
@@ -112,12 +125,14 @@ export function Player() {
     // Check if song changed
     if (lastSrcRef.current !== newSrc) {
       lastSrcRef.current = newSrc
-      audio.src = newSrc
 
-      // Auto-play new song if we're in playing state
-      if (isPlaying) {
-        audio.play().catch(console.error)
+      // If currently playing or pending play, we want to auto-play the new song
+      if (isPlaying || pendingPlayRef.current) {
+        pendingPlayRef.current = true
       }
+
+      audio.src = newSrc
+      audio.load()
     } else {
       // Same song, just toggle play/pause
       if (isPlaying) {
