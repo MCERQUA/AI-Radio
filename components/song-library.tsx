@@ -47,30 +47,30 @@ export function SongLibrary() {
   }
 
   return (
-    <div className="p-6">
+    <div className="p-4 md:p-6">
       <Tabs defaultValue="browse" className="w-full">
-        <TabsList className="bg-secondary/50 border border-border/50 mb-6">
+        <TabsList className="bg-secondary/50 border border-border/50 mb-4 md:mb-6 h-12">
           <TabsTrigger
             value="browse"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground min-h-[44px] px-4"
           >
             Browse
           </TabsTrigger>
           <TabsTrigger
             value="trending"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground min-h-[44px] px-4"
           >
             Trending
           </TabsTrigger>
           <TabsTrigger
             value="queue"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground min-h-[44px] px-4"
           >
             Queue
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="browse" className="space-y-6">
+        <TabsContent value="browse" className="space-y-4 md:space-y-6">
           <div className="flex flex-wrap gap-2">
             {genres.map((genre) => (
               <Button
@@ -78,10 +78,10 @@ export function SongLibrary() {
                 variant="outline"
                 size="sm"
                 className={cn(
-                  "rounded-full border-border/50 transition-all",
+                  "rounded-full border-border/50 transition-all min-h-[40px] px-4 text-sm",
                   selectedGenre === genre
                     ? "bg-primary text-primary-foreground border-primary glow-red"
-                    : "hover:border-primary/50 hover:text-primary",
+                    : "hover:border-primary/50 hover:text-primary active:bg-primary/20",
                 )}
                 onClick={() => setSelectedGenre(genre)}
               >
@@ -173,23 +173,22 @@ function SongRow({ song, index, isActive, onPlay, onAddToQueue, onAddToPlaylist,
   return (
     <div
       className={cn(
-        "group flex items-center gap-4 rounded-lg p-3 transition-all hover:bg-secondary/50",
+        "group flex items-center gap-2 md:gap-4 rounded-lg p-2 md:p-3 transition-all hover:bg-secondary/50 active:bg-secondary/70 min-h-[64px] cursor-pointer",
         isActive && "bg-primary/10 border border-primary/30",
       )}
+      onClick={onPlay}
     >
-      <div className="w-8 text-center">
-        <span className="text-sm text-muted-foreground group-hover:hidden">{index}</span>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="hidden h-8 w-8 group-hover:flex items-center justify-center text-primary hover:text-primary hover:bg-primary/20"
-          onClick={onPlay}
-        >
-          <Play className="h-4 w-4 fill-current" />
-        </Button>
-      </div>
+      {/* Play button - always visible on mobile, hover on desktop */}
+      <Button
+        variant="ghost"
+        size="icon"
+        className="h-11 w-11 min-h-[44px] min-w-[44px] flex items-center justify-center text-primary hover:text-primary hover:bg-primary/20 active:bg-primary/30 shrink-0"
+        onClick={(e) => { e.stopPropagation(); onPlay(); }}
+      >
+        <Play className="h-5 w-5 fill-current" />
+      </Button>
 
-      <div className="relative h-12 w-12 overflow-hidden rounded-md">
+      <div className="relative h-12 w-12 overflow-hidden rounded-md shrink-0">
         <img src={song.cover || "/placeholder.svg"} alt={song.title} className="h-full w-full object-cover" />
         {isActive && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/60">
@@ -210,35 +209,42 @@ function SongRow({ song, index, isActive, onPlay, onAddToQueue, onAddToPlaylist,
       </div>
 
       <div className="flex-1 min-w-0">
-        <p className={cn("font-medium truncate", isActive && "text-primary")}>{song.title}</p>
-        <p className="text-sm text-muted-foreground truncate">{song.artist}</p>
+        <p className={cn("font-medium truncate text-sm md:text-base", isActive && "text-primary")}>{song.title}</p>
+        <p className="text-xs md:text-sm text-muted-foreground truncate">{song.artist}</p>
       </div>
 
-      <span className="hidden sm:block text-xs rounded-full bg-secondary px-2 py-1 text-muted-foreground">
+      <span className="hidden lg:block text-xs rounded-full bg-secondary px-2 py-1 text-muted-foreground">
         {song.genre}
       </span>
 
-      <div className="flex items-center gap-1 text-muted-foreground">
+      <div className="hidden sm:flex items-center gap-1 text-muted-foreground">
         <Clock className="h-4 w-4" />
         <span className="text-sm">{formatDuration(song.duration)}</span>
       </div>
 
-      <ShareButton song={song} />
+      <div className="hidden md:block">
+        <ShareButton song={song} />
+      </div>
 
       <Button
         variant="ghost"
         size="icon"
-        className="h-8 w-8 text-muted-foreground hover:text-accent"
-        onClick={() => downloadSong(song)}
+        className="hidden md:flex h-11 w-11 min-h-[44px] min-w-[44px] text-muted-foreground hover:text-accent"
+        onClick={(e) => { e.stopPropagation(); downloadSong(song); }}
         title="Download"
       >
-        <Download className="h-4 w-4" />
+        <Download className="h-5 w-5" />
       </Button>
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
-            <MoreHorizontal className="h-4 w-4" />
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-11 w-11 min-h-[44px] min-w-[44px] text-muted-foreground hover:text-foreground"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <MoreHorizontal className="h-5 w-5" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-48 bg-popover border-border">
@@ -301,9 +307,10 @@ function TrendingSongCard({
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-xl bg-card border border-border/50 transition-all hover:border-primary/50",
+        "group relative overflow-hidden rounded-xl bg-card border border-border/50 transition-all hover:border-primary/50 active:border-primary/70 cursor-pointer",
         isActive && "border-primary glow-red",
       )}
+      onClick={onPlay}
     >
       <div className="relative aspect-square">
         <img src={song.cover || "/placeholder.svg"} alt={song.title} className="h-full w-full object-cover" />
@@ -315,15 +322,15 @@ function TrendingSongCard({
           </span>
         </div>
 
-        <div className="absolute right-3 top-3 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="absolute right-3 top-3">
           <Button
             size="icon"
             variant="ghost"
-            className="h-8 w-8 rounded-full bg-black/50 text-white hover:bg-black/70 hover:text-accent"
-            onClick={() => downloadSong(song)}
+            className="h-11 w-11 min-h-[44px] min-w-[44px] rounded-full bg-black/50 text-white hover:bg-black/70 hover:text-accent active:bg-black/80"
+            onClick={(e) => { e.stopPropagation(); downloadSong(song); }}
             title="Download"
           >
-            <Download className="h-4 w-4" />
+            <Download className="h-5 w-5" />
           </Button>
         </div>
 
@@ -333,13 +340,13 @@ function TrendingSongCard({
           <p className="text-xs text-accent mt-1">{song.plays.toLocaleString()} plays</p>
         </div>
 
-        <div className="absolute right-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="absolute right-3 bottom-3">
           <Button
             size="icon"
-            className="h-12 w-12 rounded-full bg-primary text-primary-foreground hover:bg-primary/80 glow-red"
-            onClick={onPlay}
+            className="h-14 w-14 min-h-[56px] min-w-[56px] rounded-full bg-primary text-primary-foreground hover:bg-primary/80 active:bg-primary/70 glow-red"
+            onClick={(e) => { e.stopPropagation(); onPlay(); }}
           >
-            <Play className="h-5 w-5 fill-current" />
+            <Play className="h-6 w-6 fill-current" />
           </Button>
         </div>
       </div>
@@ -382,20 +389,20 @@ function QueueView() {
       <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Up Next</h3>
       <div className="space-y-2">
         {queue.map((song, index) => (
-          <div key={`${song.id}-${index}`} className="flex items-center gap-4 rounded-lg bg-secondary/30 p-3">
+          <div key={`${song.id}-${index}`} className="flex items-center gap-3 md:gap-4 rounded-lg bg-secondary/30 p-3 min-h-[64px]">
             <span className="w-6 text-center text-sm text-muted-foreground">{index + 1}</span>
-            <img src={song.cover || "/placeholder.svg"} alt={song.title} className="h-10 w-10 rounded object-cover" />
+            <img src={song.cover || "/placeholder.svg"} alt={song.title} className="h-12 w-12 rounded object-cover" />
             <div className="flex-1 min-w-0">
-              <p className="font-medium truncate">{song.title}</p>
-              <p className="text-sm text-muted-foreground truncate">{song.artist}</p>
+              <p className="font-medium truncate text-sm md:text-base">{song.title}</p>
+              <p className="text-xs md:text-sm text-muted-foreground truncate">{song.artist}</p>
             </div>
             <Button
               variant="ghost"
               size="icon"
-              className="h-8 w-8 text-muted-foreground hover:text-destructive"
+              className="h-11 w-11 min-h-[44px] min-w-[44px] text-muted-foreground hover:text-destructive active:bg-destructive/20"
               onClick={() => removeFromQueue(song.id)}
             >
-              <MoreHorizontal className="h-4 w-4" />
+              <MoreHorizontal className="h-5 w-5" />
             </Button>
           </div>
         ))}

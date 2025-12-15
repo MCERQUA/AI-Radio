@@ -149,9 +149,9 @@ export function Player() {
         />
       </div>
 
-      <div className="flex items-center justify-between gap-4 px-4 py-3 md:px-6">
-        {/* Song Info */}
-        <div className="flex items-center gap-4 min-w-0 w-1/4">
+      <div className="flex items-center justify-between gap-2 px-3 py-2 md:gap-4 md:px-6 md:py-3">
+        {/* Song Info - Hidden on mobile, shown on md+ */}
+        <div className="hidden md:flex items-center gap-4 min-w-0 w-1/4">
           {currentSong ? (
             <>
               <div className="relative h-14 w-14 overflow-hidden rounded-md shrink-0">
@@ -184,19 +184,19 @@ export function Player() {
               <Button
                 variant="ghost"
                 size="icon"
-                className={cn("h-8 w-8 shrink-0", isFavorite && "text-primary")}
+                className={cn("h-11 w-11 min-h-[44px] min-w-[44px] shrink-0", isFavorite && "text-primary")}
                 onClick={toggleFavorite}
               >
-                <Heart className={cn("h-4 w-4", isFavorite && "fill-current")} />
+                <Heart className={cn("h-5 w-5", isFavorite && "fill-current")} />
               </Button>
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-8 w-8 shrink-0 text-muted-foreground hover:text-accent"
+                className="h-11 w-11 min-h-[44px] min-w-[44px] shrink-0 text-muted-foreground hover:text-accent"
                 onClick={() => downloadSong(currentSong)}
                 title="Download"
               >
-                <Download className="h-4 w-4" />
+                <Download className="h-5 w-5" />
               </Button>
               <ShareButton song={currentSong} />
             </>
@@ -211,45 +211,64 @@ export function Player() {
           )}
         </div>
 
+        {/* Mobile: Compact song info */}
+        <div className="flex md:hidden items-center gap-2 min-w-0 shrink-0">
+          {currentSong && (
+            <>
+              <div className="relative h-10 w-10 overflow-hidden rounded shrink-0">
+                <img
+                  src={currentSong.cover || "/placeholder.svg"}
+                  alt={currentSong.title}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="min-w-0 max-w-[80px]">
+                <p className="text-xs font-medium truncate">{currentSong.title}</p>
+                <p className="text-[10px] text-muted-foreground truncate">{currentSong.artist}</p>
+              </div>
+            </>
+          )}
+        </div>
+
         {/* Controls */}
-        <div className="flex flex-col items-center gap-2 flex-1 max-w-md">
-          <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
-              <Shuffle className="h-4 w-4" />
+        <div className="flex flex-col items-center gap-1 md:gap-2 flex-1 max-w-md">
+          <div className="flex items-center gap-1 md:gap-2">
+            <Button variant="ghost" size="icon" className="hidden sm:flex h-11 w-11 min-h-[44px] min-w-[44px] text-muted-foreground hover:text-foreground active:bg-secondary">
+              <Shuffle className="h-5 w-5" />
             </Button>
             <Button
               variant="ghost"
               size="icon"
-              className="h-9 w-9 text-foreground hover:text-primary"
+              className="h-11 w-11 min-h-[44px] min-w-[44px] text-foreground hover:text-primary active:bg-secondary"
               onClick={playPrevious}
             >
               <SkipBack className="h-5 w-5 fill-current" />
             </Button>
             <Button
               size="icon"
-              className="h-12 w-12 rounded-full bg-primary text-primary-foreground hover:bg-primary/80 glow-red"
+              className="h-14 w-14 min-h-[56px] min-w-[56px] rounded-full bg-primary text-primary-foreground hover:bg-primary/80 active:bg-primary/70 glow-red"
               onClick={() => setIsPlaying(!isPlaying)}
             >
               {isPlaying ? (
-                <Pause className="h-5 w-5 fill-current" />
+                <Pause className="h-6 w-6 fill-current" />
               ) : (
-                <Play className="h-5 w-5 fill-current ml-0.5" />
+                <Play className="h-6 w-6 fill-current ml-0.5" />
               )}
             </Button>
             <Button
               variant="ghost"
               size="icon"
-              className="h-9 w-9 text-foreground hover:text-primary"
+              className="h-11 w-11 min-h-[44px] min-w-[44px] text-foreground hover:text-primary active:bg-secondary"
               onClick={playNext}
             >
               <SkipForward className="h-5 w-5 fill-current" />
             </Button>
-            <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
-              <Repeat className="h-4 w-4" />
+            <Button variant="ghost" size="icon" className="hidden sm:flex h-11 w-11 min-h-[44px] min-w-[44px] text-muted-foreground hover:text-foreground active:bg-secondary">
+              <Repeat className="h-5 w-5" />
             </Button>
           </div>
 
-          <div className="flex items-center gap-2 w-full">
+          <div className="hidden sm:flex items-center gap-2 w-full">
             <span className="text-xs text-muted-foreground w-10 text-right">{formatTime(currentTime)}</span>
             <Slider
               value={[progress]}
@@ -270,7 +289,23 @@ export function Player() {
           </div>
         </div>
 
-        {/* Volume & Extras */}
+        {/* Mobile action buttons */}
+        <div className="flex md:hidden items-center gap-1">
+          {currentSong && (
+            <>
+              <Button
+                variant="ghost"
+                size="icon"
+                className={cn("h-11 w-11 min-h-[44px] min-w-[44px]", isFavorite && "text-primary")}
+                onClick={toggleFavorite}
+              >
+                <Heart className={cn("h-5 w-5", isFavorite && "fill-current")} />
+              </Button>
+            </>
+          )}
+        </div>
+
+        {/* Volume & Extras - Desktop only */}
         <div className="hidden md:flex items-center gap-4 w-1/4 justify-end">
           {isRadioMode && (
             <div className="flex items-center gap-1.5 text-primary">
@@ -279,18 +314,18 @@ export function Player() {
             </div>
           )}
 
-          <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
-            <ListMusic className="h-4 w-4" />
+          <Button variant="ghost" size="icon" className="h-11 w-11 min-h-[44px] min-w-[44px] text-muted-foreground hover:text-foreground">
+            <ListMusic className="h-5 w-5" />
           </Button>
 
           <div className="flex items-center gap-2">
             <Button
               variant="ghost"
               size="icon"
-              className="h-8 w-8 text-muted-foreground hover:text-foreground"
+              className="h-11 w-11 min-h-[44px] min-w-[44px] text-muted-foreground hover:text-foreground"
               onClick={() => setVolume(volume === 0 ? 0.7 : 0)}
             >
-              {volume === 0 ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+              {volume === 0 ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
             </Button>
             <Slider
               value={[volume * 100]}

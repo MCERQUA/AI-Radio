@@ -157,3 +157,55 @@
 ::-webkit-scrollbar-thumb:hover {
   background: oklch(0.55 0.25 25 / 0.7);
 }
+
+/* Mobile touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase tap targets on touch devices */
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Remove hover effects on touch */
+  .hover\:bg-secondary\/50:hover {
+    background-color: transparent;
+  }
+
+  /* Add active states for touch feedback */
+  button:active,
+  [role="button"]:active {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+
+  /* Better slider thumb for touch */
+  [data-slot="slider-thumb"] {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  /* Prevent text selection on interactive elements */
+  button,
+  [role="button"] {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+/* Safe area insets for notched devices */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .fixed.bottom-0 {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Smooth scrolling for iOS */
+.overflow-y-auto,
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+}
