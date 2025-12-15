@@ -98,27 +98,24 @@ export function Player() {
     }
   }, [setCurrentTime])
 
-  // Handle song change
+  // Handle song change and play/pause
   useEffect(() => {
-    if (audioRef.current && currentSong?.src) {
-      audioRef.current.src = currentSong.src
-      audioRef.current.load()
-      if (isPlaying) {
-        audioRef.current.play().catch(console.error)
-      }
-    }
-  }, [currentSong])
+    if (!audioRef.current) return
 
-  // Handle play/pause
-  useEffect(() => {
-    if (audioRef.current) {
+    if (currentSong?.src) {
+      // Only update src if it changed
+      if (audioRef.current.src !== window.location.origin + currentSong.src) {
+        audioRef.current.src = currentSong.src
+        audioRef.current.load()
+      }
+
       if (isPlaying) {
         audioRef.current.play().catch(console.error)
       } else {
         audioRef.current.pause()
       }
     }
-  }, [isPlaying])
+  }, [currentSong, isPlaying])
 
   // Handle volume change
   useEffect(() => {
