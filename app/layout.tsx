@@ -14,21 +14,19 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: "SprayFoamRadio.com - AI Music Player",
-  description: "Discover and play AI-generated music at SprayFoamRadio.com",
-  metadataBase: new URL("https://sprayfoamradio.com"),
+  title: "AI-Radio - AI Music Player",
+  description: "Discover and play AI-generated music at AI-Radio",
   openGraph: {
-    title: "SprayFoamRadio.com",
+    title: "AI-Radio",
     description: "Discover and play AI-generated music",
-    siteName: "SprayFoamRadio",
+    siteName: "AI-Radio",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SprayFoamRadio.com",
+    title: "AI-Radio",
     description: "Discover and play AI-generated music",
   },
-    generator: 'v0.app'
 }
 
 export default function RootLayout({

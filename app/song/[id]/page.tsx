@@ -19,25 +19,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!song) {
     return {
-      title: "Song Not Found - SprayFoamRadio.com",
+      title: "Song Not Found - AI-Radio",
     }
   }
 
-  const description = song.description || `Listen to "${song.title}" by ${song.artist} on SprayFoamRadio.com`
-  const baseUrl = "https://sprayfoamradio.com"
+  const description = song.description || `Listen to "${song.title}" by ${song.artist} on AI-Radio`
   const imageUrl = song.cover && song.cover !== "/placeholder.svg"
-    ? `${baseUrl}${song.cover}`
-    : `${baseUrl}/og-image.png`
+    ? song.cover
+    : "/og-image.png"
 
   return {
-    title: `${song.title} - ${song.artist} | SprayFoamRadio.com`,
+    title: `${song.title} - ${song.artist} | AI-Radio`,
     description,
     openGraph: {
       title: `${song.title} - ${song.artist}`,
       description,
       type: "music.song",
-      siteName: "SprayFoamRadio.com",
-      url: `${baseUrl}/song/${song.id}`,
+      siteName: "AI-Radio",
+      url: `/song/${song.id}`,
       images: [
         {
           url: imageUrl,

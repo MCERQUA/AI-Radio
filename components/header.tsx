@@ -59,8 +59,8 @@ export function Header() {
             </div>
             <div>
               <h1 className="text-lg md:text-xl font-bold tracking-tight">
-                <span className="text-primary glow-red-text">Spray</span>
-                <span className="text-foreground">Foam</span>
+                <span className="text-primary glow-red-text">AI</span>
+                <span className="text-foreground">-</span>
                 <span className="text-accent glow-yellow-text">Radio</span>
               </h1>
               <p className="text-xs text-muted-foreground hidden sm:block">AI-Generated Music</p>

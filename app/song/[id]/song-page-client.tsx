@@ -43,7 +43,7 @@ export function SongPageClient({ song }: SongPageClientProps) {
     ? `${window.location.origin}/song/${song.id}`
     : `/song/${song.id}`
 
-  const shareText = `Check out "${song.title}" by ${song.artist} on SprayFoamRadio.com!`
+  const shareText = `Check out "${song.title}" by ${song.artist} on AI-Radio!`
 
   useEffect(() => {
     audioRef.current = new Audio(song.src)
@@ -123,7 +123,7 @@ export function SongPageClient({ song }: SongPageClientProps) {
           </Link>
           <Link href="/" className="flex items-center gap-2">
             <Radio className="h-6 w-6 text-primary" />
-            <span className="font-bold text-lg">SprayFoamRadio</span>
+            <span className="font-bold text-lg">AI-Radio</span>
           </Link>
         </div>
       </header>
@@ -299,7 +299,7 @@ export function SongPageClient({ song }: SongPageClientProps) {
             <Link href="/">
               <Button size="lg" className="gap-2 bg-accent text-accent-foreground hover:bg-accent/90 glow-yellow font-semibold">
                 <Radio className="h-5 w-5" />
-                Listen to More on SprayFoamRadio
+                Listen to More on AI-Radio
               </Button>
             </Link>
           </div>
