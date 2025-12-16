@@ -2,6 +2,8 @@
 
 A modern, customizable music radio web app built with Next.js. Clone it and create your own internet radio station with your tracks!
 
+> **Sponsored by [Contractors Choice Agency](https://contractorschoiceagency.com)** - This creative project was funded to give contractors access to custom songs for their businesses. Because every hard-working contractor deserves a better day with custom music to listen to on the job site.
+
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-DJ--PiGuy-ff6b35?style=for-the-badge)](https://ai-radio-mcerquas-projects.vercel.app/)
 [![Built with Next.js](https://img.shields.io/badge/Built%20with-Next.js%2015-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -197,12 +199,19 @@ Total reduction: **98%** smaller file sizes for fast loading.
 
 MIT License - Feel free to use this for your own radio station!
 
+## Sponsor
+
+This project is proudly sponsored by **[Contractors Choice Agency](https://contractorschoiceagency.com)**.
+
+Their mission: Give contractors access to custom songs for their businesses, making every work day a little better with music made just for them.
+
 ## Credits
 
-- Original design inspired by modern music streaming apps
+- Sponsored by [Contractors Choice Agency](https://contractorschoiceagency.com)
 - Built with [Claude Code](https://claude.ai)
 - Album covers generated with AI image generation
+- Original design inspired by modern music streaming apps
 
 ---
 
-**Made with beats and code**
+**Made with beats and code for the hardworking contractors out there**
