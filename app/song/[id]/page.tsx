@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { getSongById, songsData, formatDuration } from "@/lib/songs-data"
+import { getSongById, songsData, formatDuration, getCoverHero } from "@/lib/songs-data"
 import { SongPageClient } from "./song-page-client"
 
 interface PageProps {
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const description = song.description || `Listen to "${song.title}" by ${song.artist} on DJ-PiGuy`
   const imageUrl = song.cover && song.cover !== "/placeholder.svg"
-    ? song.cover
+    ? getCoverHero(song.cover)
     : "/og-image.png"
 
   return {

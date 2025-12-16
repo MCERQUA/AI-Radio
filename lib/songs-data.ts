@@ -308,3 +308,18 @@ export function formatDuration(seconds: number): string {
   const secs = Math.floor(seconds % 60)
   return `${mins}:${secs.toString().padStart(2, "0")}`
 }
+
+// Helper functions to get optimized cover paths
+export function getCoverThumb(cover: string): string {
+  if (!cover || cover === "/placeholder.svg") return "/placeholder.svg"
+  // Convert /covers/name.png to /covers/thumb/name.webp
+  const baseName = cover.replace("/covers/", "").replace(".png", "")
+  return `/covers/thumb/${baseName}.webp`
+}
+
+export function getCoverHero(cover: string): string {
+  if (!cover || cover === "/placeholder.svg") return "/placeholder.svg"
+  // Convert /covers/name.png to /covers/hero/name.webp
+  const baseName = cover.replace("/covers/", "").replace(".png", "")
+  return `/covers/hero/${baseName}.webp`
+}

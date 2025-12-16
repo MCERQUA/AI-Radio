@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Slider } from "@/components/ui/slider"
 import type { SongData } from "@/lib/songs-data"
-import { formatDuration } from "@/lib/songs-data"
+import { formatDuration, getCoverHero } from "@/lib/songs-data"
 
 interface SongPageClientProps {
   song: SongData
@@ -135,7 +135,7 @@ export function SongPageClient({ song }: SongPageClientProps) {
             {/* Album Art */}
             <div className="aspect-square relative rounded-2xl overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20 shadow-2xl">
               <img
-                src={song.cover || "/placeholder.svg"}
+                src={getCoverHero(song.cover)}
                 alt={song.title}
                 className="w-full h-full object-cover"
               />

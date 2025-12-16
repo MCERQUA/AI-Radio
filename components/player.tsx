@@ -18,6 +18,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
 import { useMusic } from "./music-context"
+import { getCoverThumb } from "@/lib/songs-data"
 import { ShareButton } from "./share-button"
 import { cn } from "@/lib/utils"
 
@@ -182,7 +183,7 @@ export function Player() {
             <>
               <div className="relative h-14 w-14 overflow-hidden rounded-md shrink-0">
                 <img
-                  src={currentSong.cover || "/placeholder.svg"}
+                  src={getCoverThumb(currentSong.cover)}
                   alt={currentSong.title}
                   className="h-full w-full object-cover"
                 />
@@ -243,7 +244,7 @@ export function Player() {
             <>
               <div className="relative h-10 w-10 overflow-hidden rounded shrink-0">
                 <img
-                  src={currentSong.cover || "/placeholder.svg"}
+                  src={getCoverThumb(currentSong.cover)}
                   alt={currentSong.title}
                   className="h-full w-full object-cover"
                 />

@@ -17,6 +17,7 @@ import {
 import { useMusic, type Song } from "./music-context"
 import { ShareButton } from "./share-button"
 import { cn } from "@/lib/utils"
+import { getCoverThumb } from "@/lib/songs-data"
 
 const genres = [
   "All",
@@ -192,7 +193,7 @@ function SongRow({ song, index, isActive, onPlay, onAddToQueue, onAddToPlaylist,
       </Button>
 
       <div className="relative h-10 w-10 sm:h-12 sm:w-12 overflow-hidden rounded-md shrink-0">
-        <img src={song.cover || "/placeholder.svg"} alt={song.title} className="h-full w-full object-cover" />
+        <img src={getCoverThumb(song.cover)} alt={song.title} className="h-full w-full object-cover" />
         {isActive && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/60">
             <div className="flex gap-0.5">
@@ -333,7 +334,7 @@ function TrendingSongCard({
       onClick={onPlay}
     >
       <div className="relative aspect-square">
-        <img src={song.cover || "/placeholder.svg"} alt={song.title} className="h-full w-full object-cover" />
+        <img src={getCoverThumb(song.cover)} alt={song.title} className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
         <div className="absolute left-3 top-3">
@@ -394,7 +395,7 @@ function QueueView() {
           <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">Now Playing</h3>
           <div className="flex items-center gap-4 rounded-lg bg-primary/10 border border-primary/30 p-4">
             <img
-              src={currentSong.cover || "/placeholder.svg"}
+              src={getCoverThumb(currentSong.cover)}
               alt={currentSong.title}
               className="h-16 w-16 rounded-md object-cover"
             />
@@ -411,7 +412,7 @@ function QueueView() {
         {queue.map((song, index) => (
           <div key={`${song.id}-${index}`} className="flex items-center gap-3 md:gap-4 rounded-lg bg-secondary/30 p-3 min-h-[64px]">
             <span className="w-6 text-center text-sm text-muted-foreground">{index + 1}</span>
-            <img src={song.cover || "/placeholder.svg"} alt={song.title} className="h-12 w-12 rounded object-cover" />
+            <img src={getCoverThumb(song.cover)} alt={song.title} className="h-12 w-12 rounded object-cover" />
             <div className="flex-1 min-w-0">
               <p className="font-medium truncate text-sm md:text-base">{song.title}</p>
               <p className="text-xs md:text-sm text-muted-foreground truncate">{song.artist}</p>
