@@ -4,7 +4,14 @@ A modern, customizable music radio web app built with Next.js. Clone it and crea
 
 > **Sponsored by [Contractors Choice Agency](https://contractorschoiceagency.com)** - This creative project was funded to give contractors access to custom songs for their businesses. Because every hard-working contractor deserves a better day with custom music to listen to on the job site.
 
+### Origin Story
+
+This project started as [SprayFoamRadio.com](https://sprayfoamradio.com) - a custom radio station built specifically for spray foam insulation contractors. The concept was simple: create AI-generated hip-hop tracks celebrating the trades, giving contractors something fun and unique to listen to while on the job.
+
+The project has since been open-sourced as **DJ-PiGuy Radio** so anyone can clone it and create their own custom radio station for their business, brand, or community.
+
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-DJ--PiGuy-ff6b35?style=for-the-badge)](https://ai-radio-mcerquas-projects.vercel.app/)
+[![SprayFoamRadio](https://img.shields.io/badge/Original-SprayFoamRadio.com-blue?style=for-the-badge)](https://sprayfoamradio.com)
 [![Built with Next.js](https://img.shields.io/badge/Built%20with-Next.js%2015-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
