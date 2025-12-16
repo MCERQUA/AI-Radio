@@ -14,17 +14,17 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: "AI-Radio - AI Music Player",
-  description: "Discover and play AI-generated music at AI-Radio",
+  title: "DJ-PiGuy - AI Music Player",
+  description: "Discover and play AI-generated music by DJ-PiGuy",
   openGraph: {
-    title: "AI-Radio",
+    title: "DJ-PiGuy",
     description: "Discover and play AI-generated music",
-    siteName: "AI-Radio",
+    siteName: "DJ-PiGuy",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI-Radio",
+    title: "DJ-PiGuy",
     description: "Discover and play AI-generated music",
   },
 }

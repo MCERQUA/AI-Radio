@@ -24,7 +24,7 @@ export function ShareButton({ song, variant = "ghost", size = "icon" }: ShareBut
     ? `${window.location.origin}/song/${song.id}`
     : `/song/${song.id}`
 
-  const shareText = `Check out "${song.title}" by ${song.artist} on AI-Radio!`
+  const shareText = `Check out "${song.title}" by ${song.artist} on DJ-PiGuy!`
 
   const copyToClipboard = async () => {
     try {

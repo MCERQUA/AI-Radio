@@ -19,23 +19,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!song) {
     return {
-      title: "Song Not Found - AI-Radio",
+      title: "Song Not Found - DJ-PiGuy",
     }
   }
 
-  const description = song.description || `Listen to "${song.title}" by ${song.artist} on AI-Radio`
+  const description = song.description || `Listen to "${song.title}" by ${song.artist} on DJ-PiGuy`
   const imageUrl = song.cover && song.cover !== "/placeholder.svg"
     ? song.cover
     : "/og-image.png"
 
   return {
-    title: `${song.title} - ${song.artist} | AI-Radio`,
+    title: `${song.title} - ${song.artist} | DJ-PiGuy`,
     description,
     openGraph: {
       title: `${song.title} - ${song.artist}`,
       description,
       type: "music.song",
-      siteName: "AI-Radio",
+      siteName: "DJ-PiGuy",
       url: `/song/${song.id}`,
       images: [
         {
