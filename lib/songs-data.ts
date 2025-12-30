@@ -8,6 +8,9 @@ export interface SongData {
   plays: number
   src: string
   description?: string
+  website?: string
+  phone?: string
+  business?: string
 }
 
 export const songsData: SongData[] = [
@@ -296,6 +299,73 @@ export const songsData: SongData[] = [
     plays: 0,
     src: "/music/82a973c3-5119-4b87-9ca7-a123049983ae.mp3",
     description: "Unknown track - needs identification.",
+  },
+  {
+    id: "28",
+    title: "Turn Me Up",
+    artist: "X-LABS",
+    genre: "Electronic",
+    duration: 156,
+    cover: "/covers/x-labs-turn-me-up.png",
+    plays: 0,
+    src: "/music/X-LABS-Turn-Me-Up.mp3",
+    description: "High-energy electronic track from X-LABS (irā x lāβ).",
+    website: "iraxlab.com",
+  },
+  {
+    id: "29",
+    title: "AI Jam",
+    artist: "AI Developers & Coding Crew",
+    genre: "Reggae",
+    duration: 134,
+    cover: "/covers/ai-jam-reggae.png",
+    plays: 0,
+    src: "/music/AI-Jam-Regga.mp3",
+    description: "Reggae vibes for the coding session. AI and developers jamming together.",
+  },
+  {
+    id: "30",
+    title: "Code Block Cartel",
+    artist: "Underground Cyber Hackers",
+    genre: "Hip-Hop",
+    duration: 224,
+    cover: "/covers/code-block-cartel.png",
+    plays: 0,
+    src: "/music/Code-Block-Cartel.mp3",
+    description: "Dark cyberpunk beats for the underground coders. Hack the mainframe.",
+  },
+  {
+    id: "31",
+    title: "Street Lessons",
+    artist: "DJ PiGuy",
+    genre: "Hip-Hop",
+    duration: 91,
+    cover: "/covers/street-lessons.png",
+    plays: 0,
+    src: "/music/street-lessons-cover.mp3",
+    description: "Old school wisdom passed down. Respect, knowledge, and street smarts.",
+  },
+  {
+    id: "32",
+    title: "Shadow Coders",
+    artist: "DJ PiGuy",
+    genre: "Hip-Hop",
+    duration: 105,
+    cover: "/covers/shadow-coders.png",
+    plays: 0,
+    src: "/music/Shadow-Coders.mp3",
+    description: "Anonymous hackers in the server room. Code in the shadows.",
+  },
+  {
+    id: "33",
+    title: "Get On The List",
+    artist: "DJ PiGuy",
+    genre: "Hip-Hop",
+    duration: 174,
+    cover: "/covers/get-on-the-list.png",
+    plays: 0,
+    src: "/music/Get-on-the-list.mp3",
+    description: "VIP status only. Velvet ropes and exclusive vibes.",
   },
 ]
 
