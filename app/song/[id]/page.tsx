@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { getSongById, songsData, formatDuration } from "@/lib/songs-data"
+import { getSongById, songsData, formatDuration, getCoverHero } from "@/lib/songs-data"
 import { SongPageClient } from "./song-page-client"
 
 interface PageProps {
@@ -24,9 +24,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const description = song.description || `Listen to "${song.title}" by ${song.artist} on DJ-PiGuy`
-  // Use original PNG for social sharing (better compatibility than WebP)
+  // Use hero WebP (800x800) for social sharing - exists for all songs
   const imageUrl = song.cover && song.cover !== "/placeholder.svg"
-    ? song.cover
+    ? getCoverHero(song.cover)
     : "/og-image.png"
 
   return {
@@ -41,8 +41,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       images: [
         {
           url: imageUrl,
-          width: 1200,
-          height: 1200,
+          width: 800,
+          height: 800,
           alt: `${song.title} album cover`,
         },
       ],
