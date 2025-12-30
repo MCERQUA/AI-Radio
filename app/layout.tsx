@@ -14,6 +14,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://dj-piguy.netlify.app"),
   title: "DJ-PiGuy - AI Music Player",
   description: "Discover and play AI-generated music by DJ-PiGuy",
   openGraph: {
