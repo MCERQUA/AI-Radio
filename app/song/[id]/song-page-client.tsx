@@ -17,6 +17,8 @@ import {
   Building2,
   Clock,
   Radio,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -31,9 +33,11 @@ import { formatDuration, getCoverHero } from "@/lib/songs-data"
 
 interface SongPageClientProps {
   song: SongData
+  prevSongId: string
+  nextSongId: string
 }
 
-export function SongPageClient({ song }: SongPageClientProps) {
+export function SongPageClient({ song, prevSongId, nextSongId }: SongPageClientProps) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
   const [copied, setCopied] = useState(false)
@@ -114,6 +118,22 @@ export function SongPageClient({ song }: SongPageClientProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
+      {/* Floating Navigation Buttons */}
+      <Link
+        href={`/song/${prevSongId}`}
+        className="fixed left-4 top-1/2 -translate-y-1/2 z-40 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-background/80 border border-border/50 backdrop-blur-sm shadow-lg hover:bg-primary hover:text-primary-foreground transition-all duration-200 hover:scale-110"
+        title="Previous song"
+      >
+        <ChevronLeft className="h-6 w-6" />
+      </Link>
+      <Link
+        href={`/song/${nextSongId}`}
+        className="fixed right-4 top-1/2 -translate-y-1/2 z-40 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-background/80 border border-border/50 backdrop-blur-sm shadow-lg hover:bg-primary hover:text-primary-foreground transition-all duration-200 hover:scale-110"
+        title="Next song"
+      >
+        <ChevronRight className="h-6 w-6" />
+      </Link>
+
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-border/50 bg-background/95 backdrop-blur-xl">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">

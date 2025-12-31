@@ -64,5 +64,10 @@ export default async function SongPage({ params }: PageProps) {
     notFound()
   }
 
-  return <SongPageClient song={song} />
+  // Find current song index and get prev/next IDs
+  const currentIndex = songsData.findIndex((s) => s.id === id)
+  const prevSongId = currentIndex > 0 ? songsData[currentIndex - 1].id : songsData[songsData.length - 1].id
+  const nextSongId = currentIndex < songsData.length - 1 ? songsData[currentIndex + 1].id : songsData[0].id
+
+  return <SongPageClient song={song} prevSongId={prevSongId} nextSongId={nextSongId} />
 }
