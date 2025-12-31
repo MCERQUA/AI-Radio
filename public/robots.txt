@@ -1,0 +1,9 @@
+# DJ-PiGuy Robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://dj-piguy.netlify.app/sitemap.xml
+
+# Disallow admin/API routes
+Disallow: /api/
