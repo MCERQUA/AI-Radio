@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Radio, Search, Sparkles, Menu, X, Heart, ListMusic, Plus, Play, Trash2 } from "lucide-react"
+import Link from "next/link"
+import { Radio, Search, Sparkles, Menu, X, Heart, ListMusic, Plus, Play, Trash2, Info } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
@@ -65,6 +66,13 @@ export function Header() {
               </h1>
               <p className="text-xs text-muted-foreground hidden sm:block">AI-Generated Music</p>
             </div>
+            <Link
+              href="/about"
+              className="hidden sm:flex items-center gap-1.5 ml-4 px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground rounded-full border border-border/50 hover:border-primary/50 hover:bg-primary/10 transition-all"
+            >
+              <Info className="h-3.5 w-3.5" />
+              About
+            </Link>
           </div>
 
           <div className="flex items-center gap-2 md:gap-4">
@@ -109,7 +117,7 @@ export function Header() {
               </Button>
             </div>
 
-            <div className="p-4">
+            <div className="p-4 space-y-2">
               <Button
                 variant="ghost"
                 className={cn(
@@ -124,6 +132,17 @@ export function Header() {
                   <p className="text-xs text-muted-foreground">Auto-play random songs</p>
                 </div>
               </Button>
+              <Link
+                href="/about"
+                className="flex items-center gap-3 w-full h-14 min-h-[56px] px-4 rounded-md hover:bg-secondary/50 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Info className="h-5 w-5 text-muted-foreground" />
+                <div>
+                  <p className="font-medium">About DJ-PiGuy</p>
+                  <p className="text-xs text-muted-foreground">Learn about the AI DJ</p>
+                </div>
+              </Link>
             </div>
 
             <div className="px-4 py-2">
