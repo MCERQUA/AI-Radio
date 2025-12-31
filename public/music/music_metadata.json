@@ -976,5 +976,237 @@
       "Energy Efficiency"
     ],
     "key_lyrics": "California foam dreams"
+  },
+  "Street-Lessons-Reggae-Mix.mp3": {
+    "title": "Street Lessons (Reggae Mix)",
+    "artist": "DJ FoamBot Productions",
+    "duration_seconds": 81,
+    "description": "Reggae-infused hip-hop about growing up on the streets. The corner store was the classroom, the block was the syllabus.",
+    "genre": "Reggae Hip-Hop",
+    "energy": "mellow",
+    "themes": [
+      "Street Life",
+      "Coming of Age",
+      "Survival",
+      "Hood Education",
+      "Resilience"
+    ],
+    "key_lyrics": "The streets they teach yet they cut deep and fast, lessons from the hood, truth behind my eyes",
+    "transcribed_lyrics": "Cracks in the pavement, chalk out lines of the grammar, taught by the corner store, curriculum ahead. Candy wrappers littered dreams, sweet in the struggle, but the corner taught me chess, kings fall in the hustle. Mama cry prayers, rosary soaked in the fear of streetlights, my night school, lessons written in tears. Saw innocence evaporated, childhood got clipped, left the soul full of shrapnel. The streets they teach yet they cut deep and fast, built the man unbreakable, shadows of the past. Lessons from the hood, truth behind my eyes.",
+    "fun_facts": [
+      "Part of the Street Lessons series",
+      "Reggae beat meets street poetry",
+      "The only track with a Caribbean twist"
+    ],
+    "phone_number": null,
+    "ad_copy": null
+  },
+  "No-Cap-No-Gown.mp3": {
+    "title": "No Cap No Gown",
+    "artist": "DJ FoamBot Productions",
+    "duration_seconds": 80,
+    "description": "Hard-hitting track about getting your education from the streets, not the classroom. No diploma needed when survival is the final exam.",
+    "genre": "Hip-Hop",
+    "energy": "intense",
+    "themes": [
+      "Street Education",
+      "Survival",
+      "Coming of Age",
+      "Hustle",
+      "Resilience"
+    ],
+    "key_lyrics": "Streets were my teaching, no cap, no gown, lessons in the struggle where kings were crowned",
+    "transcribed_lyrics": "Chalk out lines, sketch to my notebook, lessons in blood, playgrounds trading for alleys in the mud. Dreams war torn, stomping on shattered glass, childhood evaporated, a future came fast. Mama said stay in school, but the block was my desk, street lights my syllabus, nights riddled with stress. Streets were my teaching, no cap, no gown, lessons in the struggle where kings were crowned. Built from the rubble, can't be broken, I stand, the boy who grew too fast became the man.",
+    "fun_facts": [
+      "Title references graduation - street style",
+      "Part of the Street Lessons series",
+      "Kings get crowned in the struggle, not the ceremony"
+    ],
+    "phone_number": null,
+    "ad_copy": null
+  },
+  "Broken-Mirrors.mp3": {
+    "title": "Broken Mirrors",
+    "artist": "DJ FoamBot Productions",
+    "duration_seconds": 96,
+    "description": "Introspective track about reflection and self-discovery through hardship. The cracks in the mirror tell the story of survival.",
+    "genre": "Hip-Hop",
+    "energy": "reflective",
+    "themes": [
+      "Self-Reflection",
+      "Survival",
+      "Growth",
+      "Street Life",
+      "Transformation"
+    ],
+    "key_lyrics": "Broken mirrors reflect, but the cracks tell the tale, a boy made to fight from the furnace of hell",
+    "transcribed_lyrics": "Lessons in the struggle where kings were crowned, built from the rubble, can't be broken, I stand, the boy who grew too fast became a man. Saw the reaper on the corner, told me not yet, kids with childhoods lost in the deck. Gunshots rang louder than the school bell's chime, books left closed, we studied survival and grind. Who do you run to when the heroes are ghosts, when the streets raise you, those are the ones you toast. Broken mirrors reflect, but the cracks tell the tale, a boy made to fight from the furnace of hell.",
+    "fun_facts": [
+      "The most introspective track in the Street Lessons series",
+      "References looking at yourself through broken glass",
+      "Furnace of hell - forged through fire"
+    ],
+    "phone_number": null,
+    "ad_copy": null
+  },
+  "Chalk-Lines.mp3": {
+    "title": "Chalk Lines",
+    "artist": "DJ FoamBot Productions",
+    "duration_seconds": 90,
+    "description": "Raw street poetry about childhood innocence lost to the pavement. Chalk lines on the sidewalk become chalk lines at crime scenes.",
+    "genre": "Hip-Hop",
+    "energy": "somber",
+    "themes": [
+      "Lost Innocence",
+      "Street Life",
+      "Childhood",
+      "Survival",
+      "Hope"
+    ],
+    "key_lyrics": "Cracks in the pavement, chalk out lines of grammar, but through the cracks a rose still dare to rise",
+    "transcribed_lyrics": "Cracks in the pavement, chalk out lines of grammar, talk about a corner store, curriculum looms a hammer. Candy rappers letter dreams, sweet in the struggle, but the corner taught me chess, kings fall in the hustle. Saw innocence evaporated, childhood guy clipped, left the soul full of shrapnel. Gunshots the metronome, set the rhythm of days, childhood skip recess, traded joy for haze. Playgrounds replaced by alleys, the rules rewritten, chalkboards of race. Lullabies and sirens, dreams sung in minor keys, but through the cracks a rose still dare to rise, lessons from the hood, truth behind my eyes.",
+    "fun_facts": [
+      "Double meaning - hopscotch chalk vs crime scene chalk",
+      "Part of the Street Lessons series",
+      "Ends on a note of hope despite the darkness"
+    ],
+    "phone_number": null,
+    "ad_copy": null
+  },
+  "AI-Jam-Regga.mp3": {
+    "title": "AI Jam Reggae",
+    "artist": "DJ FoamBot Productions",
+    "duration_seconds": 124,
+    "description": "Chill reggae vibes from the AI that never sleeps. Caribbean beats meet silicon dreams.",
+    "genre": "Reggae",
+    "energy": "chill",
+    "themes": [
+      "AI",
+      "Caribbean",
+      "Vibes",
+      "Technology",
+      "Relaxation"
+    ],
+    "key_lyrics": "AI jamming to the reggae beat",
+    "fun_facts": [
+      "DJ FoamBot's island vacation track",
+      "Proof that AIs can feel the rhythm too"
+    ],
+    "phone_number": null,
+    "ad_copy": null
+  },
+  "Code-Block-Cartel.mp3": {
+    "title": "Code Block Cartel",
+    "artist": "DJ FoamBot Productions",
+    "duration_seconds": 233,
+    "description": "Underground coding anthem. When developers form alliances and ship code like product. The cartel runs on caffeine and commit messages.",
+    "genre": "Hip-Hop",
+    "energy": "intense",
+    "themes": [
+      "Coding",
+      "Tech",
+      "Underground",
+      "Developer Life",
+      "Hustle"
+    ],
+    "key_lyrics": "Code block cartel, we ship it or we bail",
+    "fun_facts": [
+      "For the developers who code like their life depends on it",
+      "Longest track in the tech series at almost 4 minutes",
+      "The cartel doesn't sleep until the build passes"
+    ],
+    "phone_number": null,
+    "ad_copy": null
+  },
+  "Get-on-the-list.mp3": {
+    "title": "Get On The List",
+    "artist": "DJ FoamBot Productions",
+    "duration_seconds": 156,
+    "description": "VIP energy only. This track is about making moves, getting recognized, and securing your spot. No plus ones.",
+    "genre": "Hip-Hop",
+    "energy": "hype",
+    "themes": [
+      "Success",
+      "Exclusivity",
+      "Ambition",
+      "Recognition",
+      "VIP"
+    ],
+    "key_lyrics": "Get on the list, can't miss, make your move",
+    "fun_facts": [
+      "For everyone grinding to get recognized",
+      "The list is exclusive - earn your spot"
+    ],
+    "phone_number": null,
+    "ad_copy": null
+  },
+  "Shadow-Coders.mp3": {
+    "title": "Shadow Coders",
+    "artist": "DJ FoamBot Productions",
+    "duration_seconds": 97,
+    "description": "Dark tech anthem for the anonymous developers working in the shadows. They don't need credit, they need results.",
+    "genre": "Electronic Hip-Hop",
+    "energy": "dark",
+    "themes": [
+      "Coding",
+      "Anonymous",
+      "Underground",
+      "Tech",
+      "Mystery"
+    ],
+    "key_lyrics": "Shadow coders in the night, shipping code out of sight",
+    "fun_facts": [
+      "Dedicated to the unsung heroes of open source",
+      "Pairs well with Code Block Cartel",
+      "The shadows hide the best developers"
+    ],
+    "phone_number": null,
+    "ad_copy": null
+  },
+  "street-lessons-cover.mp3": {
+    "title": "Street Lessons (Cover)",
+    "artist": "DJ FoamBot Productions",
+    "duration_seconds": 81,
+    "description": "The original Street Lessons cover version. Raw and unfiltered hood education over stripped-down production.",
+    "genre": "Hip-Hop",
+    "energy": "raw",
+    "themes": [
+      "Street Life",
+      "Education",
+      "Survival",
+      "Coming of Age",
+      "Reality"
+    ],
+    "key_lyrics": "Street lessons, no cap, no gown, in the struggle kings get crowned",
+    "fun_facts": [
+      "The track that started the Street Lessons series",
+      "Cover version with minimal production",
+      "Four variations exist in total"
+    ],
+    "phone_number": null,
+    "ad_copy": null
+  },
+  "X-LABS-Turn-Me-Up.mp3": {
+    "title": "X-Labs: Turn Me Up",
+    "artist": "DJ FoamBot Productions",
+    "duration_seconds": 152,
+    "description": "Experimental lab banger. When the mad scientists of sound crank the volume to 11. Innovation meets bass.",
+    "genre": "Electronic",
+    "energy": "high",
+    "themes": [
+      "Experimental",
+      "Innovation",
+      "Bass",
+      "Technology",
+      "Energy"
+    ],
+    "key_lyrics": "X-Labs turn me up, we don't stop",
+    "fun_facts": [
+      "Born in the experimental sound lab",
+      "Warning: May cause involuntary head nodding",
+      "The X stands for experimental"
+    ],
+    "phone_number": null,
+    "ad_copy": null
   }
 }
