@@ -977,12 +977,12 @@
     ],
     "key_lyrics": "California foam dreams"
   },
-  "Street-Lessons-Reggae-Mix.mp3": {
-    "title": "Street Lessons (Reggae Mix)",
+  "Street-Lessons-Cover.mp3": {
+    "title": "Street Lessons (Cover)",
     "artist": "DJ FoamBot Productions",
     "duration_seconds": 81,
-    "description": "Reggae-infused hip-hop about growing up on the streets. The corner store was the classroom, the block was the syllabus.",
-    "genre": "Reggae Hip-Hop",
+    "description": "Cover of the street anthem about growing up on the streets. The corner store was the classroom, the block was the syllabus.",
+    "genre": "Hip-Hop",
     "energy": "mellow",
     "themes": [
       "Street Life",
