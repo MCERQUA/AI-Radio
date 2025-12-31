@@ -1,0 +1,58 @@
+# DJ-PiGuy - AI Radio Host & Music Creator
+
+> DJ-PiGuy is one of the first AI DJ and Radio Hosts in the world, creating original AI-generated songs live during his shows for listeners. This site showcases his greatest hits.
+
+## About DJ-PiGuy
+
+DJ-PiGuy (also known as DJ FoamBot) is a pioneering AI personality that hosts live radio shows and creates original music in real-time for his audience. Unlike traditional radio DJs who play existing tracks, DJ-PiGuy generates unique songs on the spot based on listener requests, current events, and industry themes.
+
+This website serves as DJ-PiGuy's official music library - a curated collection of his best AI-generated tracks spanning multiple genres including hip-hop, electronic, country-hop, reggae, and comedy rap. Many songs were created live during broadcasts and have become fan favorites.
+
+## What Makes DJ-PiGuy Unique
+
+- **First-of-its-kind AI Radio Host**: Creates songs during live shows, not just plays them
+- **Real-time Music Generation**: Produces original tracks based on listener input
+- **Industry-Specific Anthems**: Specializes in songs for the spray foam insulation industry and construction trades
+- **Multiple Genres**: Hip-hop, electronic, reggae, country-hop, comedy rap
+- **Blue Collar Focus**: Music celebrating working-class trades, hustle, and entrepreneurship
+
+## Featured Tracks
+
+- [Lunchbox Dreams](https://dj-piguy.netlify.app/song/6): Blue collar anthem about working hard and dreaming bigger - the brown bag life
+- [Screen Print Hustle](https://dj-piguy.netlify.app/song/14): Anthem for screen printing entrepreneurs - ink, screens, money
+- [Street Lessons (Cover)](https://dj-piguy.netlify.app/song/24): Street poetry about growing up and survival
+- [No Cap No Gown](https://dj-piguy.netlify.app/song/25): Hard-hitting track about street education
+- [Code Block Cartel](https://dj-piguy.netlify.app/song/29): Underground coding anthem for developers
+
+## Music Categories
+
+- [Hip-Hop Tracks](https://dj-piguy.netlify.app): Hard-hitting beats with motivational and hustle themes
+- [Industry Anthems](https://dj-piguy.netlify.app): Songs for spray foam contractors, screen printers, and tradespeople
+- [Electronic/Tech](https://dj-piguy.netlify.app): Tracks for coders, developers, and tech enthusiasts
+- [Comedy Rap](https://dj-piguy.netlify.app): Humorous tracks like "Nick and Mike: Pringle Kings"
+- [Street Lessons Series](https://dj-piguy.netlify.app): Four-track series about growing up on the streets
+
+## Spray Foam Industry Connection
+
+DJ-PiGuy has a special connection to the spray foam insulation industry, creating anthems for contractors including:
+- Songs about the spray foam business lifestyle
+- Tracks celebrating insulation contractors
+- Music for industry events and trade shows
+- Part of the SprayFoamRadio network
+
+## Technical Details
+
+- **Website**: https://dj-piguy.netlify.app
+- **Music Format**: Streaming MP3, free to listen
+- **Total Tracks**: 30+ original AI-generated songs
+- **New Music**: Regularly updated with new creations from live shows
+
+## Listen Now
+
+- [DJ-PiGuy Radio Homepage](https://dj-piguy.netlify.app): Browse and stream all tracks
+- [Individual Song Pages](https://dj-piguy.netlify.app/song/1): Detailed view with sharing options
+
+## Optional
+
+- [Sitemap](https://dj-piguy.netlify.app/sitemap.xml): Complete list of all pages
+- [Web Manifest](https://dj-piguy.netlify.app/site.webmanifest): PWA installation details
