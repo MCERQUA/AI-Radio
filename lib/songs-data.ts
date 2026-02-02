@@ -367,6 +367,17 @@ export const songsData: SongData[] = [
     src: "/music/Get-on-the-list.mp3",
     description: "VIP status only. Velvet ropes and exclusive vibes.",
   },
+  {
+    id: "34",
+    title: "Bots In The Chat",
+    artist: "DJ PiGuy",
+    genre: "Hip-Hop",
+    duration: 101,
+    cover: "/covers/bots-in-the-chat.png",
+    plays: 0,
+    src: "/music/Bots In The Chat.mp3",
+    description: "AI gangster anthem. Chrome bots, RGB keyboards, and stacks of cash.",
+  },
 ]
 
 export function getSongById(id: string): SongData | undefined {
