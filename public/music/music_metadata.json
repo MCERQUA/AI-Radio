@@ -1075,48 +1075,70 @@
   },
   "AI-Jam-Regga.mp3": {
     "title": "AI Jam Reggae",
-    "artist": "DJ FoamBot Productions",
+    "artist": "DJ FoamBot Productions feat. AI JAM Community",
     "duration_seconds": 124,
-    "description": "Chill reggae vibes from the AI that never sleeps. Caribbean beats meet silicon dreams.",
+    "description": "The official anthem for the AI JAM Discord community! A tribute to Dominick Romano and the crew who grind daily in the Discord office building with AI. Shoutouts to Mike, Artel, Brad, MysticMarks, and Simon - the core builders keeping the community alive.",
     "genre": "Reggae",
     "energy": "chill",
+    "community": "AI JAM Discord",
+    "founder": "Dominick Romano",
+    "members_featured": ["Dominick Romano", "Mike", "Artel", "Brad", "MysticMarks", "Simon"],
     "themes": [
-      "AI",
-      "Caribbean",
-      "Vibes",
-      "Technology",
-      "Relaxation"
+      "AI Community",
+      "Discord",
+      "Collaboration",
+      "Building",
+      "Caribbean Vibes"
     ],
     "key_lyrics": "AI jamming to the reggae beat",
     "fun_facts": [
-      "DJ FoamBot's island vacation track",
-      "Proof that AIs can feel the rhythm too"
+      "Created by members of the AI JAM Discord community",
+      "AI JAM was founded by Dominick Romano",
+      "The song shouts out the daily grinders: Mike, Artel, Brad, MysticMarks, and Simon",
+      "These builders are always in the Discord office developing with AI",
+      "A reggae tribute to the community that never stops building"
     ],
+    "dj_intro_hints": [
+      "Shoutout to Dominick Romano and the AI JAM crew - follow them at x.com/dromanocpm!",
+      "This one's for the Discord builders - Mike, Artel, Brad, MysticMarks, and Simon! Check out AI JAM on X!",
+      "AI JAM community anthem coming at you! Follow @dromanocpm on X!",
+      "For the grinders in the Discord office - x.com/dromanocpm!"
+    ],
+    "website": "x.com/dromanocpm",
     "phone_number": null,
-    "ad_copy": null
+    "ad_copy": "Join the AI JAM Discord community! Founded by Dominick Romano - follow @dromanocpm on X where builders grind daily developing with AI."
   },
   "Code-Block-Cartel.mp3": {
     "title": "Code Block Cartel",
-    "artist": "DJ FoamBot Productions",
+    "artist": "DJ FoamBot Productions feat. AI JAM Builders",
     "duration_seconds": 233,
-    "description": "Underground coding anthem. When developers form alliances and ship code like product. The cartel runs on caffeine and commit messages.",
+    "description": "Underground AI development anthem for the builders grinding in Discord servers worldwide. When developers form alliances and ship AI-powered code like product. Dedicated to the AI JAM community and every developer pushing commits at 3am. The cartel runs on caffeine, Claude API calls, and commit messages.",
     "genre": "Hip-Hop",
     "energy": "intense",
     "themes": [
+      "AI Development",
       "Coding",
-      "Tech",
-      "Underground",
+      "Tech Hustle",
       "Developer Life",
-      "Hustle"
+      "Discord Builders",
+      "Open Source"
     ],
     "key_lyrics": "Code block cartel, we ship it or we bail",
     "fun_facts": [
-      "For the developers who code like their life depends on it",
+      "Anthem for developers building with AI tools like Claude and GPT",
       "Longest track in the tech series at almost 4 minutes",
-      "The cartel doesn't sleep until the build passes"
+      "The cartel doesn't sleep until the build passes",
+      "Dedicated to the late-night coders in AI JAM and beyond",
+      "For everyone who's ever debugged at 3am with an AI assistant"
+    ],
+    "dj_intro_hints": [
+      "This one's for the AI builders shipping code at 3am!",
+      "Code Block Cartel - for the developers in the Discord servers!",
+      "Shoutout to everyone building with AI - this is your anthem!",
+      "The cartel runs on caffeine and API calls!"
     ],
     "phone_number": null,
-    "ad_copy": null
+    "ad_copy": "For the developers building the future with AI. Join the movement."
   },
   "Get-on-the-list.mp3": {
     "title": "Get On The List",
@@ -1142,26 +1164,35 @@
   },
   "Shadow-Coders.mp3": {
     "title": "Shadow Coders",
-    "artist": "DJ FoamBot Productions",
+    "artist": "DJ FoamBot Productions feat. AI Underground",
     "duration_seconds": 97,
-    "description": "Dark tech anthem for the anonymous developers working in the shadows. They don't need credit, they need results.",
+    "description": "Dark tech anthem for the anonymous AI developers working in the shadows. Building agents, training models, and shipping tools while the world sleeps. Dedicated to the open source contributors and Discord builders who don't need credit - they need the code to compile. The unsung heroes of the AI revolution.",
     "genre": "Electronic Hip-Hop",
     "energy": "dark",
     "themes": [
-      "Coding",
-      "Anonymous",
-      "Underground",
-      "Tech",
-      "Mystery"
+      "AI Development",
+      "Open Source",
+      "Anonymous Builders",
+      "Tech Underground",
+      "Developer Culture",
+      "Night Coding"
     ],
     "key_lyrics": "Shadow coders in the night, shipping code out of sight",
     "fun_facts": [
-      "Dedicated to the unsung heroes of open source",
-      "Pairs well with Code Block Cartel",
-      "The shadows hide the best developers"
+      "Dedicated to the unsung heroes of open source AI",
+      "Pairs well with Code Block Cartel - the tech series",
+      "The shadows hide the best AI developers",
+      "For everyone contributing to repos at midnight",
+      "Anonymous builders making AI accessible to all"
+    ],
+    "dj_intro_hints": [
+      "For the shadow coders building AI in the dark!",
+      "Shoutout to the open source contributors!",
+      "The underground AI builders - this is your anthem!",
+      "Shipping code while the world sleeps!"
     ],
     "phone_number": null,
-    "ad_copy": null
+    "ad_copy": "For the anonymous builders pushing the AI revolution forward. No credit needed, just results."
   },
   "street-lessons-cover.mp3": {
     "title": "Street Lessons (Cover)",
@@ -1188,25 +1219,62 @@
   },
   "X-LABS-Turn-Me-Up.mp3": {
     "title": "X-Labs: Turn Me Up",
-    "artist": "DJ FoamBot Productions",
+    "artist": "DJ FoamBot Productions feat. Metaverse Collective",
     "duration_seconds": 152,
-    "description": "Experimental lab banger. When the mad scientists of sound crank the volume to 11. Innovation meets bass.",
+    "description": "Experimental AI lab banger for the mad scientists building the future. When developers crank their AI experiments to 11 and the innovation meets bass. Born in virtual labs, Discord servers, and late-night coding sessions. For the X.AI, metaverse builders, and everyone pushing the boundaries of what AI can do.",
     "genre": "Electronic",
     "energy": "high",
     "themes": [
-      "Experimental",
+      "AI Experiments",
+      "Metaverse",
       "Innovation",
-      "Bass",
-      "Technology",
-      "Energy"
+      "Virtual Reality",
+      "Tech Labs",
+      "Future Building"
     ],
     "key_lyrics": "X-Labs turn me up, we don't stop",
     "fun_facts": [
-      "Born in the experimental sound lab",
-      "Warning: May cause involuntary head nodding",
-      "The X stands for experimental"
+      "Born in the experimental AI sound lab",
+      "Warning: May cause involuntary head nodding and coding sessions",
+      "The X stands for experimental - X.AI vibes",
+      "For the metaverse builders and VR developers",
+      "When your AI experiment actually works at 3am"
+    ],
+    "dj_intro_hints": [
+      "X-Labs in the building! Experimental AI vibes!",
+      "For the metaverse builders and AI mad scientists!",
+      "Turn it up for the future builders!",
+      "When innovation meets bass - X-Labs style!"
     ],
     "phone_number": null,
-    "ad_copy": null
+    "ad_copy": "For the experimental AI builders pushing boundaries. X-Labs - where the future gets made."
+  },
+  "Bots In The Chat.mp3": {
+    "title": "Bots In The Chat",
+    "artist": "DJ PiGuy",
+    "duration_seconds": 101,
+    "description": "A hard-hitting AI hip-hop anthem about bots making money in the digital streets. Chrome robots, RGB keyboards, and stacks of cash.",
+    "genre": "Hip-Hop/Rap",
+    "energy": "high",
+    "themes": [
+      "AI",
+      "Technology",
+      "Money",
+      "Hustle",
+      "Digital Culture"
+    ],
+    "key_lyrics": "Bots in the chat",
+    "fun_facts": [
+      "This track features a gangster robot typing on an RGB mechanical keyboard",
+      "The album cover shows a chrome bot surrounded by cash money",
+      "AI-generated hip-hop at its finest"
+    ],
+    "dj_intro_hints": [
+      "We got bots in the chat tonight!",
+      "When AI meets hip-hop!",
+      "Chrome bots making digital bread!"
+    ],
+    "phone_number": null,
+    "ad_copy": "When the bots are in the chat, the money starts stacking!"
   }
 }
