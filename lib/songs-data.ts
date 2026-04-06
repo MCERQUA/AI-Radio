@@ -840,17 +840,6 @@ export const songsData: SongData[] = [
     src: "/music/too-legit-to-commit.mp3",
     description: "Code so clean it doesn't need version control. MC Hammer meets GitHub.",
   },
-  {
-    id: "77",
-    title: "Too Legit to Commit (V2)",
-    artist: "DJ PiGuy",
-    genre: "Hip-Hop",
-    duration: 137,
-    cover: "/covers/too-legit-to-commit.png",
-    plays: 0,
-    src: "/music/too-legit-to-commit-2.mp3",
-    description: "Still too legit. Still not committing. Version two can't be touched.",
-  },
 ]
 
 export function getSongById(id: string): SongData | undefined {
